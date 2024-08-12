@@ -1,32 +1,61 @@
 package com.weather.wear.member.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
+@NoArgsConstructor
 @Data
-@Entity(name = "ww_users") // JPA가 관리하는 클래스
+@Entity(name = "ww_user") // JPA가 관리하는 클래스
 public class Member {
 
-    @Id //기본키 PK
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 생성
-    private Long user_no;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_no", nullable = false)
+    private Long userNo;
 
+    @Column(name = "user_email", nullable = false, unique = true)
     private String email;
-    private String password;
-    private Timestamp joined;
+
+    @Column(name = "user_name", nullable = false)
+    private String userName;
+
+    @Column(name = "user_passwd", nullable = false)
+    private String userPw;
+
+    @CreationTimestamp
+    @Column(name = "saved_date", updatable = false)
+    private Timestamp createdTime;
 
     // 기타 필드들
 
     // 생성자, 기타 메서드들
+// 빌더를 이용한 생성자
     @Builder
-    public Member(String email, String password){
+    public Member(String email, String userPw, String userName, Long userNo, Timestamp createdTime) {
         this.email = email;
-        this.password = password;
+        this.userPw = userPw;
+        this.userName = userName;
+        this.userNo = userNo;
+        this.createdTime = createdTime;
+    }
+
+    // 복사 생성자 (선택사항, 필요에 따라 생성)
+    public Member(Member member) {
+        this.email = member.getEmail();
+        this.userPw = member.getUserPw();
+        this.userName = member.getUserName();
+        this.userNo = member.getUserNo();
+        this.createdTime = member.getCreatedTime();
+    }
+
+
+    public boolean checkPassword(String password){
+        return this.userPw.equals(password); // 비밀번호 검증
     }
 }

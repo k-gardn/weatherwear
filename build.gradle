@@ -51,8 +51,13 @@ dependencies {
 	implementation "com.querydsl:querydsl-sql"
 	compileOnly "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"
 
+	// Spring Security 의존성 추가
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	// modelMapper: DTO 와 엔티티 간 변환 처리해주는 라이브러리
 	implementation 'org.modelmapper:modelmapper:3.1.1'
+
+	implementation 'org.apache.logging.log4j:log4j-api:2.20.0' // Use the latest version
+	implementation 'org.apache.logging.log4j:log4j-core:2.20.0' // Use the latest version
 
 
 	// 기존 롬복 이외도, jakarta 와 querydsl 어노테이션 추가 (spring boot 3.0 이상은 jakarta 대신 jakarta 사용)

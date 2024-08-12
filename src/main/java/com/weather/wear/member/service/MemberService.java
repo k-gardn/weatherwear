@@ -19,4 +19,16 @@ public class MemberService {
         return members;
     }
 
+    public Member findByEmail(String email){
+//        Member user;
+//        user = userRepository.findByEmail(email);
+        System.out.println("서비스 email :" + email);
+        return userRepository.findByEmail(email);
+    }
+
+    public void save(Member member){
+        userRepository.save(member);
+    }
+
+
 }
