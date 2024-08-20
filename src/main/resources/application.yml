@@ -15,9 +15,11 @@ spring:
 
 #   cloudtype에서 작업
     datasource:
-        url: ${DB_URL}
-        username: ${DB_USER_NAME}
+        host: ${DB_HOST}
+        port: ${DB_PORT}
+        username: ${DB_USERNAME}
         password: ${DB_PASSWORD}
+        name: ${DB_NAME}
         driver-class-name: org.mariadb.jdbc.Driver
 
 #server:
