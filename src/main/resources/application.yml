@@ -14,13 +14,13 @@ spring:
 #        driver-class-name: org.mariadb.jdbc.Driver
 
 #   cloudtype에서 작업
-    datasource:
-        host: ${DB_HOST}
-        port: ${DB_PORT}
-        username: ${DB_USERNAME}
-        password: ${DB_PASSWORD}
-        name: ${DB_NAME}
-        driver-class-name: org.mariadb.jdbc.Driver
+#    datasource:
+#        host: ${DB_HOST}
+#        port: ${DB_PORT}
+#        username: ${DB_USERNAME}
+#        password: ${DB_PASSWORD}
+#        name: ${DB_NAME}
+#        driver-class-name: org.mariadb.jdbc.Driver
 
 #server:
 #    port:8080
