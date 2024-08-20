@@ -6,11 +6,19 @@ spring:
 #            on-profile: dev
 #    profiles:
 #        active:dev
+#   local에서 작업
+#    datasource:
+#        url: jdbc:mariadb://localhost:3306/weatherwear?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
+#        username: root
+#        password: Rlarkems10#
+#        driver-class-name: org.mariadb.jdbc.Driver
+
+#   cloudtype에서 작업
     datasource:
-        url: jdbc:mariadb://localhost:3306/weatherwear?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
-        username: root
-        password: Rlarkems10#
+        url: ${DB_URL}
+        username: ${DB_USER_NAME}
+        password: ${DB_PASSWORD}
         driver-class-name: org.mariadb.jdbc.Driver
 
-server:
-    port:8080
+#server:
+#    port:8080
