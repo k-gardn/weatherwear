@@ -2,10 +2,14 @@ package com.weather.wear.member.web;
 
 import com.weather.wear.member.domain.Member;
 import com.weather.wear.member.service.MemberService;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.crypto.SecretKey;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +34,12 @@ public class MainController {
 
     @Autowired
     MemberService memberService;
+
+    @Value("${jwt.accessExpTime}")
+    private long accessExpTime;
+
+    @Value("${jwt.refExpTime}")
+    private long refExpTime;
 
     @GetMapping("/")
     public String main() {
@@ -71,7 +83,15 @@ public class MainController {
 //                if(user.getUserPw().equals(login.getUserPw())){
                 if (passwordEncoder.matches(password, user.getUserPw())) {
                     // 비밀번호가 맞을 경우
-                    rstMap.put("data", user);
+                    // 로그인 성공 시 JWT 토큰 생성
+                    String accessToken = generateJwtToken(user,accessExpTime);
+                    String refreshToken = generateJwtToken(user,refExpTime);
+
+                    System.out.println("accessToken :" + accessToken);
+                    System.out.println("refreshToken :" + refreshToken);
+                    rstMap.put("accessToken", accessToken);  // 클라이언트에 JWT 토큰 전달
+                    rstMap.put("refreshToken", refreshToken);  // 클라이언트에 JWT 토큰 전달
+//                    rstMap.put("data", user);
                     rstMap.put("success", true);
                 } else {
                     // 비밀번호가 틀린 경우
@@ -114,11 +134,22 @@ public class MainController {
             login.setUserPw(encodedPassword);
 
             //회원정보저장
-            memberService.save(login);
+            memberService.register(login);
             rstMap.put("successMsg", "회원 가입 성공");
         }
 
         return rstMap;
+    }
+
+    // JWT 토큰 생성 메서드
+    private String generateJwtToken(Member user, long expirationTime) {
+        SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
+        return Jwts.builder()
+                .setSubject(user.getEmail())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
+                .signWith(secretKey)
+                .compact();
     }
 
 }

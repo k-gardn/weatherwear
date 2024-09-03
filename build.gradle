@@ -46,6 +46,7 @@ dependencies {
 	// querydsl 라이브러리
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}:jakarta" // 기존에는 그냥 jpa, 3 버전 이상은 :jakarta 추가
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"
+
 	// apt(annotation processing tool), Q도메인 생성. 컴파일 시에만 사용됨
 	implementation "com.querydsl:querydsl-core"
 	implementation "com.querydsl:querydsl-sql"
@@ -59,6 +60,10 @@ dependencies {
 	implementation 'org.apache.logging.log4j:log4j-api:2.20.0' // Use the latest version
 	implementation 'org.apache.logging.log4j:log4j-core:2.20.0' // Use the latest version
 
+	// Spring jwt 토큰 인증
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 처리 관련 의존성
 
 	// 기존 롬복 이외도, jakarta 와 querydsl 어노테이션 추가 (spring boot 3.0 이상은 jakarta 대신 jakarta 사용)
 	annotationProcessor(

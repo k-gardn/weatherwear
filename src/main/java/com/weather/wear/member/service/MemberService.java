@@ -26,7 +26,11 @@ public class MemberService {
         return userRepository.findByEmail(email);
     }
 
-    public void save(Member member){
+    public void register(Member member){
+        userRepository.save(member);
+    }
+
+    public void saveRefToken(Member member){
         userRepository.save(member);
     }
 

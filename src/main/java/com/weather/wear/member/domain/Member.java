@@ -32,17 +32,21 @@ public class Member {
     @Column(name = "saved_date", updatable = false)
     private Timestamp createdTime;
 
+    @Column(name = "refresh_token")
+    private Long refreshToken;
+
     // 기타 필드들
 
     // 생성자, 기타 메서드들
 // 빌더를 이용한 생성자
     @Builder
-    public Member(String email, String userPw, String userName, Long userNo, Timestamp createdTime) {
+    public Member(String email, String userPw, String userName, Long userNo, Timestamp createdTime, Long refreshToken) {
         this.email = email;
         this.userPw = userPw;
         this.userName = userName;
         this.userNo = userNo;
         this.createdTime = createdTime;
+        this.refreshToken = refreshToken;
     }
 
     // 복사 생성자 (선택사항, 필요에 따라 생성)
