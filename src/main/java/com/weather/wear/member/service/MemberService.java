@@ -13,6 +13,9 @@ public class MemberService {
     @Autowired
     private UserRepository userRepository;
 
+//    @Autowired
+//    private TokenRepository tokenRepository;
+
     public List<Member> findAll(){
         List<Member> members = new ArrayList<>();
         userRepository.findAll();
@@ -22,7 +25,6 @@ public class MemberService {
     public Member findByEmail(String email){
 //        Member user;
 //        user = userRepository.findByEmail(email);
-        System.out.println("서비스 email :" + email);
         return userRepository.findByEmail(email);
     }
 
@@ -30,9 +32,9 @@ public class MemberService {
         userRepository.save(member);
     }
 
-    public void saveRefToken(Member member){
-        userRepository.save(member);
-    }
+//    public void saveRefToken(Token token){
+//        tokenRepository.save(token);
+//    }
 
 
 }

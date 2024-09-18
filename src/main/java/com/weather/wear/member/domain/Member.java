@@ -26,33 +26,37 @@ public class Member {
     private String userName;
 
     @Column(name = "user_passwd", nullable = false)
-    private String userPw;
+    private String password;
 
     @CreationTimestamp
     @Column(name = "saved_date", updatable = false)
     private Timestamp createdTime;
 
     @Column(name = "refresh_token")
-    private Long refreshToken;
+    private String refreshToken;
+
+    @Column(name = "user_def_location")
+    private String defaultLocation;
 
     // 기타 필드들
 
     // 생성자, 기타 메서드들
 // 빌더를 이용한 생성자
     @Builder
-    public Member(String email, String userPw, String userName, Long userNo, Timestamp createdTime, Long refreshToken) {
+    public Member(String email, String userPw, String userName, Long userNo, Timestamp createdTime, String refreshToken, String defaultLocation) {
         this.email = email;
-        this.userPw = userPw;
+        this.password = userPw;
         this.userName = userName;
         this.userNo = userNo;
         this.createdTime = createdTime;
         this.refreshToken = refreshToken;
+        this.defaultLocation = defaultLocation;
     }
 
     // 복사 생성자 (선택사항, 필요에 따라 생성)
     public Member(Member member) {
         this.email = member.getEmail();
-        this.userPw = member.getUserPw();
+        this.password = member.getPassword();
         this.userName = member.getUserName();
         this.userNo = member.getUserNo();
         this.createdTime = member.getCreatedTime();
@@ -60,6 +64,6 @@ public class Member {
 
 
     public boolean checkPassword(String password){
-        return this.userPw.equals(password); // 비밀번호 검증
+        return this.password.equals(password); // 비밀번호 검증
     }
 }

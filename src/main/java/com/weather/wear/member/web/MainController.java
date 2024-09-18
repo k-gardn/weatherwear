@@ -1,12 +1,14 @@
 package com.weather.wear.member.web;
 
+import com.weather.wear.common.JwtTokenProvider;
 import com.weather.wear.member.domain.Member;
 import com.weather.wear.member.service.MemberService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,18 +30,13 @@ import java.util.Map;
 
 @RestController
 public class MainController {
-
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(MainController.class);
-//    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     MemberService memberService;
 
-    @Value("${jwt.accessExpTime}")
-    private long accessExpTime;
-
-    @Value("${jwt.refExpTime}")
-    private long refExpTime;
+    @Autowired
+    JwtTokenProvider jwtTokenProvider;
 
     @GetMapping("/")
     public String main() {
@@ -61,37 +58,39 @@ public class MainController {
     }
 
     //로그인
+    @Transactional
     @PostMapping("/user/login")
     public Map<String, Object> login(@RequestBody Member login) {
         Map<String, Object> rstMap = new HashMap<>();
+        Map<String, Object> tokenMap = new HashMap<>();
         Member user;
+//        Token token = null;
         try {
             String email = login.getEmail();
-            String password = login.getUserPw();
+            String password = login.getPassword();
 
-            System.out.println("email :" + email);
-            System.out.println("password :" + login.getUserPw());
             log.debug("email : {}", email);
             log.debug("password : {}", password);
 
             user = memberService.findByEmail(email);
-            System.out.println("user :" + user);
             // 회원일 경우
             if (user != null) {
                 // BCryptPasswordEncoder를 사용해 비밀번호를 비교
                 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//                if(user.getUserPw().equals(login.getUserPw())){
-                if (passwordEncoder.matches(password, user.getUserPw())) {
+                if (passwordEncoder.matches(password, user.getPassword())) {
                     // 비밀번호가 맞을 경우
                     // 로그인 성공 시 JWT 토큰 생성
-                    String accessToken = generateJwtToken(user,accessExpTime);
-                    String refreshToken = generateJwtToken(user,refExpTime);
+                    String accessToken = jwtTokenProvider.generateAccessToken(user.getEmail());
+                    String refreshToken = jwtTokenProvider.generateRefreshToken(user.getEmail());
 
-                    System.out.println("accessToken :" + accessToken);
-                    System.out.println("refreshToken :" + refreshToken);
-                    rstMap.put("accessToken", accessToken);  // 클라이언트에 JWT 토큰 전달
-                    rstMap.put("refreshToken", refreshToken);  // 클라이언트에 JWT 토큰 전달
-//                    rstMap.put("data", user);
+                    tokenMap.put("accessToken", accessToken);  // 클라이언트에 JWT 토큰 전달
+                    tokenMap.put("refreshToken", refreshToken);  // 클라이언트에 JWT 토큰 전달
+
+                    //db에 refresh token 저장
+                    if(refreshToken != null) {
+                        user.setRefreshToken(refreshToken); // Transactional로 인해 save를 따로 하지 않아도 db에 저장가능
+                    }
+                    rstMap.put("data", tokenMap);
                     rstMap.put("success", true);
                 } else {
                     // 비밀번호가 틀린 경우
@@ -120,37 +119,36 @@ public class MainController {
         String email = login.getEmail();
         user = memberService.findByEmail(email);
 
-        System.out.println("password hey : "+login.getUserPw());
         // 기존 회원 -> 이미 가입된 회원입니다.
         if(user != null) rstMap.put("errorMsg", "이미 가입된 회원입니다.");
         // 신규 회원 -> db에 정보 저장.
         else{
             // 비밀번호 암호화
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            System.out.println("password_Check : "+login.getUserPw());
-            String encodedPassword = passwordEncoder.encode(login.getUserPw());
-            System.out.println("password_Encoding : " +encodedPassword);
-            log.debug("비밀번호 : " + login.getUserPw());
-            login.setUserPw(encodedPassword);
+            String encodedPassword = passwordEncoder.encode(login.getPassword());
+            login.setPassword(encodedPassword);
 
             //회원정보저장
             memberService.register(login);
+            rstMap.put("success", true);
             rstMap.put("successMsg", "회원 가입 성공");
         }
 
         return rstMap;
     }
+    @PostMapping("/user/myPage")
+    public Map<String, Object> getMyPage(HttpServletRequest request) {
+        Map<String, Object> rstMap = new HashMap<>();
+        // Interceptor에서 설정한 사용자 이메일 가져오기
+        String userEmail = (String) request.getAttribute("userEmail");
+        Member userInfo = memberService.findByEmail(userEmail);
+        rstMap.put("data", userInfo);
+        rstMap.put("success", true);
 
-    // JWT 토큰 생성 메서드
-    private String generateJwtToken(Member user, long expirationTime) {
-        SecretKey secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512);
-        return Jwts.builder()
-                .setSubject(user.getEmail())
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
-                .signWith(secretKey)
-                .compact();
+        // 사용자 정보를 반환
+        return rstMap;
     }
+
 
 }
 

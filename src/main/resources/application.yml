@@ -6,19 +6,18 @@ spring:
 #            on-profile: dev
 #    profiles:
 #        active:dev
+    
 #   local에서 작업
     datasource:
         url: jdbc:mariadb://localhost:3306/weatherwear?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
         username: root
         password: Rlarkems10#
         driver-class-name: org.mariadb.jdbc.Driver
-#    devtools:
-#        livereload:
-#            enabled: true
-#        restart:
-#            enabled: true
-
-
+    devtools:
+        livereload:
+            enabled: true
+        restart:
+            enabled: true
 #   cloudtype에서 작업
 #    datasource:
 #        host: ${DB_HOST}
@@ -27,9 +26,14 @@ spring:
 #        password: ${DB_PASSWORD}
 #        name: ${DB_NAME}
 #        driver-class-name: org.mariadb.jdbc.Driver
+logging:
+    config:
+        - classpath:log4j2.yml
+
 jwt:
     accessExpTime: 3600000  # 1시간 (밀리초 단위)
-    refExpTime: 18144000000
-
+    refExpTime: 18144000000 # 정하면됨
+    secretKey: Tlzmfltzlfmfaksemfdjdigkseksmseo#
 server:
     port:8080
+
