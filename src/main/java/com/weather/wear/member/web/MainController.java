@@ -44,12 +44,6 @@ public class MainController {
         return "main";
     }
 
-    @GetMapping("/greeting")
-    public String greeting() {
-
-        return "greeting";
-    }
-
     // 모든 회원 조회
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<List<Member>> getAllmembers() {

@@ -6,7 +6,7 @@ spring:
 #            on-profile: dev
 #    profiles:
 #        active:dev
-    
+
 #   local에서 작업
     datasource:
         url: jdbc:mariadb://localhost:3306/weatherwear?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
@@ -34,6 +34,14 @@ jwt:
     accessExpTime: 3600000  # 1시간 (밀리초 단위)
     refExpTime: 18144000000 # 정하면됨
     secretKey: Tlzmfltzlfmfaksemfdjdigkseksmseo#
+
+servlet:
+    multipart:
+        enabled: true
+        location: C:\jeongwon\sideproject\weatherUpload
+        max-request-size: 30MB #한 번에 최대 업로드 가능 용량
+        max-file-size: 10MB # 파일 하나의 최대 크기
+
 server:
     port:8080
 

@@ -1,0 +1,73 @@
+[DEBUG] 2024-09-22 09:36:10.739 [http-nio-8080-exec-6][FilterChainProxy.java] FilterChainProxy - Securing POST /create/board
+[DEBUG] 2024-09-22 09:36:10.755 [http-nio-8080-exec-6][FilterChainProxy.java] FilterChainProxy - Secured POST /create/board
+[DEBUG] 2024-09-22 09:36:10.755 [http-nio-8080-exec-6][LogFormatUtils.java] DispatcherServlet - POST "/create/board", parameters={multipart}
+[DEBUG] 2024-09-22 09:36:10.768 [http-nio-8080-exec-6][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to com.weather.wear.board.web.BoardController#createBoard(BoardPostRequest, MultipartFile[])
+[DEBUG] 2024-09-22 09:36:10.773 [http-nio-8080-exec-6][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-09-22 09:36:10.775 [http-nio-8080-exec-6][LogFormatUtils.java] RequestPartMethodArgumentResolver - Read "application/json" to [Board(id=null, title=오늘의 ootd, contents=오늘은 갑자기 추워져서 맨투맨입음!!, uploadImages=[])]
+[DEBUG] 2024-09-22 09:36:10.777 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
+[DEBUG] 2024-09-22 09:36:10.777 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Creating new transaction with name [com.weather.wear.board.service.BoardService.createBoard]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+[DEBUG] 2024-09-22 09:36:10.777 [http-nio-8080-exec-6][TransactionImpl.java] TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+[DEBUG] 2024-09-22 09:36:10.778 [http-nio-8080-exec-6][TransactionImpl.java] TransactionImpl - begin
+[DEBUG] 2024-09-22 09:36:10.778 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@b26fc48]
+[DEBUG] 2024-09-22 09:36:10.778 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
+[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Participating in existing transaction
+[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][PersistenceUnitUtilImpl.java] PersistenceUnitUtilImpl - jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][ActionQueue.java] ActionQueue - Executing identity-insert immediately
+[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][SqlStatementLogger.java] SQL - 
+    insert 
+    into
+        ww_board
+        (contents, title) 
+    values
+        (?, ?)
+[DEBUG] 2024-09-22 09:36:10.781 [http-nio-8080-exec-6][NavigablePathMapToInitializer.java] results - Initializer list is empty
+[DEBUG] 2024-09-22 09:36:10.781 [http-nio-8080-exec-6][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@1951a489
+[DEBUG] 2024-09-22 09:36:10.781 [http-nio-8080-exec-6][BasicResultAssembler.java] results - Extracted JDBC value [0] - [2]
+[DEBUG] 2024-09-22 09:36:10.782 [http-nio-8080-exec-6][GeneratedValuesHelper.java] IdentifierGeneratorHelper - Extracted generated values [com.weather.wear.board.entity.Board]: [Ljava.lang.Object;@8754df0
+[DEBUG] 2024-09-22 09:36:10.783 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
+[DEBUG] 2024-09-22 09:36:10.783 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Participating in existing transaction
+[DEBUG] 2024-09-22 09:36:10.783 [http-nio-8080-exec-6][PersistenceUnitUtilImpl.java] PersistenceUnitUtilImpl - jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+[DEBUG] 2024-09-22 09:36:10.784 [http-nio-8080-exec-6][ActionQueue.java] ActionQueue - Executing identity-insert immediately
+[DEBUG] 2024-09-22 09:36:10.784 [http-nio-8080-exec-6][SqlStatementLogger.java] SQL - 
+    insert 
+    into
+        ww_board_images
+        (boardId, extension, fullPath, size, storedFileName, uploadFileName) 
+    values
+        (?, ?, ?, ?, ?, ?)
+[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][NavigablePathMapToInitializer.java] results - Initializer list is empty
+[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@412a37f8
+[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][BasicResultAssembler.java] results - Extracted JDBC value [0] - [3]
+[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][GeneratedValuesHelper.java] IdentifierGeneratorHelper - Extracted generated values [com.weather.wear.board.entity.Images]: [Ljava.lang.Object;@228c6fa2
+[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
+[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Participating in existing transaction
+[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][PersistenceUnitUtilImpl.java] PersistenceUnitUtilImpl - jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][ActionQueue.java] ActionQueue - Executing identity-insert immediately
+[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][SqlStatementLogger.java] SQL - 
+    insert 
+    into
+        ww_board_images
+        (boardId, extension, fullPath, size, storedFileName, uploadFileName) 
+    values
+        (?, ?, ?, ?, ?, ?)
+[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][NavigablePathMapToInitializer.java] results - Initializer list is empty
+[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@6bfc9eac
+[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][BasicResultAssembler.java] results - Extracted JDBC value [0] - [4]
+[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][GeneratedValuesHelper.java] IdentifierGeneratorHelper - Extracted generated values [com.weather.wear.board.entity.Images]: [Ljava.lang.Object;@737c716d
+[DEBUG] 2024-09-22 09:36:10.795 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Initiating transaction commit
+[DEBUG] 2024-09-22 09:36:10.795 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(922064689<open>)]
+[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][TransactionImpl.java] TransactionImpl - committing
+[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Processing flush-time cascades
+[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Dirty checking collections
+[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#2], was: [<unreferenced>] (initialized)
+[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 0 deletions to 3 objects
+[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 1 (re)creations, 0 updates, 0 removals to 1 collections
+[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - Listing entities:
+[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Images{fullPath=C:jeongwonsideprojectweatherUpload1411737121341.jpeg, extension=null, uploadFileName=1411737121341.jpeg, size=249744, storedFileName=1411737121341.jpeg, id=3, board=com.weather.wear.board.entity.Board#2}
+[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{contents=오늘은 갑자기 추워져서 맨투맨입음!!, id=2, title=오늘의 ootd, uploadImages=[com.weather.wear.board.entity.Images#3, com.weather.wear.board.entity.Images#4]}
+[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Images{fullPath=C:jeongwonsideprojectweatherUpload1419832901313.jpeg, extension=null, uploadFileName=1419832901313.jpeg, size=270305, storedFileName=1419832901313.jpeg, id=4, board=com.weather.wear.board.entity.Board#2}
+[DEBUG] 2024-09-22 09:36:10.800 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+[DEBUG] 2024-09-22 09:36:10.801 [http-nio-8080-exec-6][AbstractMessageConverterMethodProcessor.java] RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[DEBUG] 2024-09-22 09:36:10.801 [http-nio-8080-exec-6][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Writing [{success=true}]
+[DEBUG] 2024-09-22 09:36:10.802 [http-nio-8080-exec-6][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-09-22 09:36:10.806 [http-nio-8080-exec-6][FrameworkServlet.java] DispatcherServlet - Completed 200 OK

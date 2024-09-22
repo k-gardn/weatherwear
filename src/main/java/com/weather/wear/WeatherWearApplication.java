@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.weather.wear.member.repository")
+@EnableJpaRepositories(basePackages = "com.weather.wear")
 @ComponentScan(basePackages = "com.weather.wear")
 
 public class WeatherWearApplication {
