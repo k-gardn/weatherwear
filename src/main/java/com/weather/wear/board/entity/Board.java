@@ -38,7 +38,7 @@ public class Board {
     private LocalDate createdTime;
 
     @CreationTimestamp
-    @Column(name = "updated_date", updatable = false)
+    @Column(name = "updated_date")
     private LocalDate  updatedTime;
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
@@ -50,7 +50,7 @@ public class Board {
     private Member member;
 
     @Builder
-    public Board(String title, String contents, Member member, LocalDate  createdTime, LocalDate  updatedTime) {
+    public Board(String title, String contents, Member member, LocalDate  createdTime, LocalDate updatedTime) {
         this.title = title;
         this.contents = contents;
         this.member = member;
@@ -58,9 +58,10 @@ public class Board {
         this.updatedTime = updatedTime;
     }
 
-    public void updateBoard(String title, String contents){
+    public void updateBoard(String title, String contents, LocalDate updatedTime){
         this.title = title;
         this.contents = contents;
+        this.updatedTime = updatedTime;
     }
 
     public void deleteBoard(String title, String contents){

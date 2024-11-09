@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -89,8 +90,10 @@ public class BoardService {
                            MultipartFile[] multipartFile){
         Board board = boardRepository.findById(postId).orElseThrow(()-> new IllegalArgumentException("게시글을 찾을 수 없습니다."));
 
-        board.updateBoard(request.getTitle(), request.getContents());
-
+        board.setTitle(request.getTitle());
+        board.setContents( request.getContents());
+        // 수정 시간을 현재 날짜로 설정 (시간 정보는 포함되지 않음)
+        board.setUpdatedTime(LocalDate.now());  // LocalDate로 설정 // 수정 시간 설정
         return board;
     }
 

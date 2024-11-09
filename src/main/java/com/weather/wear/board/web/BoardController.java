@@ -29,7 +29,7 @@ public class BoardController {
     BoardService boardService;
 
 
-    // 모든 회원 글 조회
+    // 모든 회원 글 조회 - 기능구현완
     @GetMapping(value = "/getAllBoards", produces = { MediaType.APPLICATION_JSON_VALUE })
     public ResponseEntity<List<Board>> getAllBoards() {
         List<Board> board
@@ -37,7 +37,7 @@ public class BoardController {
         return new ResponseEntity<>(board, HttpStatus.OK);
     }
 
-    //게시글 쓰기
+    //게시글 쓰기 - 기능구현완
     @PostMapping(value = "/create",
     consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public Map<String, Object> createBoard(@RequestPart BoardPostRequest request,
@@ -50,22 +50,8 @@ public class BoardController {
         return rstMap;
     }
 
-    // 게시글 업데이트
-    @PutMapping(value = "/{boardId}", consumes = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<Board> updateBoard(@PathVariable Long boardId, @RequestBody BoardPostRequest request,
-                                             @RequestPart("files")MultipartFile[] files) {
-        Board updatedBoard = boardService.updatePost(boardId, request, files);  // 게시글 업데이트
-        return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
-    }
 
-    // 게시글 삭제
-    @DeleteMapping("/{boardId}")
-    public ResponseEntity<Void> deleteBoard(@PathVariable Long boardId) {
-        boardService.deletePost(boardId);  // 게시글 삭제
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
-    // 본인의 게시글 전체 및 날짜별 조회
+    // 본인의 게시글 전체 및 날짜별 조회 - 기능구현완
     @PostMapping("/my-posts")
     public Map<String, Object> getMyBoards(HttpServletRequest request,
                                            @RequestBody(required = false) BoardPostRequest boardPostRequest) {
@@ -73,7 +59,7 @@ public class BoardController {
 
         // Interceptor에서 설정한 사용자 이메일 가져오기
         String userEmail = (String) request.getAttribute("userEmail");
-        
+
         // 날짜 파라미터가 제공되지 않으면 전체 게시글을 조회
         if (boardPostRequest == null || boardPostRequest.getDate() == null || boardPostRequest.getDate().isEmpty()) {
             rstMap.put("data", boardService.getBoardsByUserEmail(userEmail));
@@ -86,6 +72,21 @@ public class BoardController {
         return rstMap;
     }
 
+    // 게시글 업데이트
+    @PutMapping(value = "/{boardId}", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<Board> updateBoard(@PathVariable Long boardId,
+                                             @RequestPart BoardPostRequest request,
+                                             @RequestPart("files")MultipartFile[] files) throws IOException {
+        Board updatedBoard = boardService.updatePost(boardId, request, files);  // 게시글 업데이트
+        return new ResponseEntity<>(updatedBoard, HttpStatus.OK);
+    }
+
+    // 게시글 삭제
+    @DeleteMapping("/{boardId}")
+    public ResponseEntity<Void> deleteBoard(@PathVariable Long boardId) {
+        boardService.deletePost(boardId);  // 게시글 삭제
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 
 
 }
