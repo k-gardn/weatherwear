@@ -1,73 +1,1260 @@
-[DEBUG] 2024-09-22 09:36:10.739 [http-nio-8080-exec-6][FilterChainProxy.java] FilterChainProxy - Securing POST /create/board
-[DEBUG] 2024-09-22 09:36:10.755 [http-nio-8080-exec-6][FilterChainProxy.java] FilterChainProxy - Secured POST /create/board
-[DEBUG] 2024-09-22 09:36:10.755 [http-nio-8080-exec-6][LogFormatUtils.java] DispatcherServlet - POST "/create/board", parameters={multipart}
-[DEBUG] 2024-09-22 09:36:10.768 [http-nio-8080-exec-6][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to com.weather.wear.board.web.BoardController#createBoard(BoardPostRequest, MultipartFile[])
-[DEBUG] 2024-09-22 09:36:10.773 [http-nio-8080-exec-6][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
-[DEBUG] 2024-09-22 09:36:10.775 [http-nio-8080-exec-6][LogFormatUtils.java] RequestPartMethodArgumentResolver - Read "application/json" to [Board(id=null, title=오늘의 ootd, contents=오늘은 갑자기 추워져서 맨투맨입음!!, uploadImages=[])]
-[DEBUG] 2024-09-22 09:36:10.777 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
-[DEBUG] 2024-09-22 09:36:10.777 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Creating new transaction with name [com.weather.wear.board.service.BoardService.createBoard]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
-[DEBUG] 2024-09-22 09:36:10.777 [http-nio-8080-exec-6][TransactionImpl.java] TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
-[DEBUG] 2024-09-22 09:36:10.778 [http-nio-8080-exec-6][TransactionImpl.java] TransactionImpl - begin
-[DEBUG] 2024-09-22 09:36:10.778 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@b26fc48]
-[DEBUG] 2024-09-22 09:36:10.778 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
-[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Participating in existing transaction
-[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][PersistenceUnitUtilImpl.java] PersistenceUnitUtilImpl - jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
-[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][ActionQueue.java] ActionQueue - Executing identity-insert immediately
-[DEBUG] 2024-09-22 09:36:10.779 [http-nio-8080-exec-6][SqlStatementLogger.java] SQL - 
-    insert 
-    into
-        ww_board
-        (contents, title) 
-    values
-        (?, ?)
-[DEBUG] 2024-09-22 09:36:10.781 [http-nio-8080-exec-6][NavigablePathMapToInitializer.java] results - Initializer list is empty
-[DEBUG] 2024-09-22 09:36:10.781 [http-nio-8080-exec-6][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@1951a489
-[DEBUG] 2024-09-22 09:36:10.781 [http-nio-8080-exec-6][BasicResultAssembler.java] results - Extracted JDBC value [0] - [2]
-[DEBUG] 2024-09-22 09:36:10.782 [http-nio-8080-exec-6][GeneratedValuesHelper.java] IdentifierGeneratorHelper - Extracted generated values [com.weather.wear.board.entity.Board]: [Ljava.lang.Object;@8754df0
-[DEBUG] 2024-09-22 09:36:10.783 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
-[DEBUG] 2024-09-22 09:36:10.783 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Participating in existing transaction
-[DEBUG] 2024-09-22 09:36:10.783 [http-nio-8080-exec-6][PersistenceUnitUtilImpl.java] PersistenceUnitUtilImpl - jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
-[DEBUG] 2024-09-22 09:36:10.784 [http-nio-8080-exec-6][ActionQueue.java] ActionQueue - Executing identity-insert immediately
-[DEBUG] 2024-09-22 09:36:10.784 [http-nio-8080-exec-6][SqlStatementLogger.java] SQL - 
-    insert 
-    into
-        ww_board_images
-        (boardId, extension, fullPath, size, storedFileName, uploadFileName) 
-    values
-        (?, ?, ?, ?, ?, ?)
-[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][NavigablePathMapToInitializer.java] results - Initializer list is empty
-[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@412a37f8
-[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][BasicResultAssembler.java] results - Extracted JDBC value [0] - [3]
-[DEBUG] 2024-09-22 09:36:10.785 [http-nio-8080-exec-6][GeneratedValuesHelper.java] IdentifierGeneratorHelper - Extracted generated values [com.weather.wear.board.entity.Images]: [Ljava.lang.Object;@228c6fa2
-[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(922064689<open>)] for JPA transaction
-[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Participating in existing transaction
-[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][PersistenceUnitUtilImpl.java] PersistenceUnitUtilImpl - jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
-[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][ActionQueue.java] ActionQueue - Executing identity-insert immediately
-[DEBUG] 2024-09-22 09:36:10.789 [http-nio-8080-exec-6][SqlStatementLogger.java] SQL - 
-    insert 
-    into
-        ww_board_images
-        (boardId, extension, fullPath, size, storedFileName, uploadFileName) 
-    values
-        (?, ?, ?, ?, ?, ?)
-[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][NavigablePathMapToInitializer.java] results - Initializer list is empty
-[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.basic.BasicResultAssembler@6bfc9eac
-[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][BasicResultAssembler.java] results - Extracted JDBC value [0] - [4]
-[DEBUG] 2024-09-22 09:36:10.791 [http-nio-8080-exec-6][GeneratedValuesHelper.java] IdentifierGeneratorHelper - Extracted generated values [com.weather.wear.board.entity.Images]: [Ljava.lang.Object;@737c716d
-[DEBUG] 2024-09-22 09:36:10.795 [http-nio-8080-exec-6][AbstractPlatformTransactionManager.java] JpaTransactionManager - Initiating transaction commit
-[DEBUG] 2024-09-22 09:36:10.795 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(922064689<open>)]
-[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][TransactionImpl.java] TransactionImpl - committing
-[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Processing flush-time cascades
-[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Dirty checking collections
-[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#2], was: [<unreferenced>] (initialized)
-[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 0 deletions to 3 objects
-[DEBUG] 2024-09-22 09:36:10.796 [http-nio-8080-exec-6][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 1 (re)creations, 0 updates, 0 removals to 1 collections
-[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - Listing entities:
-[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Images{fullPath=C:jeongwonsideprojectweatherUpload1411737121341.jpeg, extension=null, uploadFileName=1411737121341.jpeg, size=249744, storedFileName=1411737121341.jpeg, id=3, board=com.weather.wear.board.entity.Board#2}
-[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{contents=오늘은 갑자기 추워져서 맨투맨입음!!, id=2, title=오늘의 ootd, uploadImages=[com.weather.wear.board.entity.Images#3, com.weather.wear.board.entity.Images#4]}
-[DEBUG] 2024-09-22 09:36:10.798 [http-nio-8080-exec-6][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Images{fullPath=C:jeongwonsideprojectweatherUpload1419832901313.jpeg, extension=null, uploadFileName=1419832901313.jpeg, size=270305, storedFileName=1419832901313.jpeg, id=4, board=com.weather.wear.board.entity.Board#2}
-[DEBUG] 2024-09-22 09:36:10.800 [http-nio-8080-exec-6][JpaTransactionManager.java] JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
-[DEBUG] 2024-09-22 09:36:10.801 [http-nio-8080-exec-6][AbstractMessageConverterMethodProcessor.java] RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-[DEBUG] 2024-09-22 09:36:10.801 [http-nio-8080-exec-6][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Writing [{success=true}]
-[DEBUG] 2024-09-22 09:36:10.802 [http-nio-8080-exec-6][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
-[DEBUG] 2024-09-22 09:36:10.806 [http-nio-8080-exec-6][FrameworkServlet.java] DispatcherServlet - Completed 200 OK
+[DEBUG] 2024-11-10 01:01:06.083 [http-nio-8080-exec-8][FilterChainProxy.java] FilterChainProxy - Securing POST /boards/my-posts
+[DEBUG] 2024-11-10 01:01:06.098 [http-nio-8080-exec-8][FilterChainProxy.java] FilterChainProxy - Secured POST /boards/my-posts
+[DEBUG] 2024-11-10 01:01:06.098 [http-nio-8080-exec-8][LogFormatUtils.java] DispatcherServlet - POST "/boards/my-posts", parameters={}
+[DEBUG] 2024-11-10 01:01:06.099 [http-nio-8080-exec-8][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to com.weather.wear.board.web.BoardController#getMyBoards(HttpServletRequest, BoardPostRequest)
+[DEBUG] 2024-11-10 01:01:06.106 [http-nio-8080-exec-8][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-11-10 01:01:06.106 [http-nio-8080-exec-8][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [BoardPostRequest(title=null, contents=null, email=null, date=2024-11-10)]
+[DEBUG] 2024-11-10 01:01:06.107 [http-nio-8080-exec-8][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1149072389<open>)] for JPA transaction
+[DEBUG] 2024-11-10 01:01:06.107 [http-nio-8080-exec-8][AbstractPlatformTransactionManager.java] JpaTransactionManager - Creating new transaction with name [com.weather.wear.board.service.BoardService.getBoardsByUserEmailAndDate]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+[DEBUG] 2024-11-10 01:01:06.107 [http-nio-8080-exec-8][TransactionImpl.java] TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+[DEBUG] 2024-11-10 01:01:06.107 [http-nio-8080-exec-8][TransactionImpl.java] TransactionImpl - begin
+[DEBUG] 2024-11-10 01:01:06.107 [http-nio-8080-exec-8][JpaTransactionManager.java] JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2f510656]
+[DEBUG] 2024-11-10 01:01:06.109 [http-nio-8080-exec-8][SqlAliasBaseImpl.java] create - Created new SQL alias : b1_0
+[DEBUG] 2024-11-10 01:01:06.109 [http-nio-8080-exec-8][SimpleFromClauseAccessImpl.java] create - Registration of TableGroup [StandardTableGroup(com.weather.wear.board.entity.Board(24694381079900))] with identifierForTableGroup [com.weather.wear.board.entity.Board] for NavigablePath [com.weather.wear.board.entity.Board] 
+[DEBUG] 2024-11-10 01:01:06.110 [http-nio-8080-exec-8][SimpleFromClauseAccessImpl.java] create - Registration of TableGroup [org.hibernate.sql.ast.tree.from.LazyTableGroup@24f4c3be] with identifierForTableGroup [com.weather.wear.board.entity.Board.member] for NavigablePath [com.weather.wear.board.entity.Board.member] 
+[DEBUG] 2024-11-10 01:01:06.110 [http-nio-8080-exec-8][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@3561022f
+[DEBUG] 2024-11-10 01:01:06.110 [http-nio-8080-exec-8][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.weather.wear.board.entity.Board(24694381079900).member(24694381300600).email) 
+[DEBUG] 2024-11-10 01:01:06.110 [http-nio-8080-exec-8][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@2cc282e9
+[DEBUG] 2024-11-10 01:01:06.110 [http-nio-8080-exec-8][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.weather.wear.board.entity.Board(24694381079900).createdTime) 
+[DEBUG] 2024-11-10 01:01:06.110 [http-nio-8080-exec-8][DomainResultGraphPrinter.java] AST - DomainResult Graph:
+ \-EntityResultImpl [com.weather.wear.board.entity.Board(24694381079900)]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).contents]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).createdTime]
+ |  +-EntityFetchSelectImpl [com.weather.wear.board.entity.Board(24694381079900).member]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).title]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).updatedTime]
+ |  \-DelayedCollectionFetch [com.weather.wear.board.entity.Board(24694381079900).uploadImages]
+
+[DEBUG] 2024-11-10 01:01:06.111 [http-nio-8080-exec-8][SqlTreePrinter.java] tree - SQL AST Tree:
+    SelectStatement {
+      FromClause {
+        StandardTableGroup (b1 : com.weather.wear.board.entity.Board(24694381079900)) {
+          primaryTableReference : ww_board as b1_0
+          TableGroupJoins {
+            left  join LazyTableGroup (m1 : com.weather.wear.board.entity.Board(24694381079900).member(24694381300600)) {
+            }
+          }
+        }
+      }
+    }
+
+[DEBUG] 2024-11-10 01:01:06.111 [http-nio-8080-exec-8][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+[DEBUG] 2024-11-10 01:01:06.111 [http-nio-8080-exec-8][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board(24694381079900).uploadImages -> DelayedCollectionInitializer(com.weather.wear.board.entity.Board(24694381079900).uploadImages)@584450597 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+	  com.weather.wear.board.entity.Board(24694381079900) -> EntityResultInitializer(com.weather.wear.board.entity.Board(24694381079900))@540921074 (SingleTableEntityPersister(com.weather.wear.board.entity.Board))
+	  com.weather.wear.board.entity.Board(24694381079900).member -> EntitySelectFetchByUniqueKeyInitializer(com.weather.wear.board.entity.Board(24694381079900).member)@2000224245 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Board.member])@1856474792)
+
+[DEBUG] 2024-11-10 01:01:06.111 [http-nio-8080-exec-8][SqlStatementLogger.java] SQL - 
+    select
+        b1_0.Board_ID,
+        b1_0.contents,
+        b1_0.saved_date,
+        b1_0.user_email,
+        b1_0.title,
+        b1_0.updated_date 
+    from
+        ww_board b1_0 
+    where
+        b1_0.user_email=? 
+        and b1_0.saved_date=?
+[DEBUG] 2024-11-10 01:01:06.112 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:06.112 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694381079900)): 19
+[DEBUG] 2024-11-10 01:01:06.112 [http-nio-8080-exec-8][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694381079900).uploadImages#19
+[DEBUG] 2024-11-10 01:01:06.112 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694381079900)#19] : 740363857
+[DEBUG] 2024-11-10 01:01:06.112 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:06.113 [http-nio-8080-exec-8][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:06.113 [http-nio-8080-exec-8][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.member.domain.Member -> EntityResultInitializer(com.weather.wear.member.domain.Member)@1811739376 (SingleTableEntityPersister(com.weather.wear.member.domain.Member))
+
+[DEBUG] 2024-11-10 01:01:06.113 [http-nio-8080-exec-8][SqlStatementLogger.java] SQL - 
+    select
+        m1_0.user_no,
+        m1_0.saved_date,
+        m1_0.user_def_location,
+        m1_0.user_email,
+        m1_0.user_passwd,
+        m1_0.refresh_token,
+        m1_0.user_name 
+    from
+        ww_user m1_0 
+    where
+        m1_0.user_email=?
+[DEBUG] 2024-11-10 01:01:06.113 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.member.domain.Member): 12
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.member.domain.Member#12] : 762629351
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [1] - [2024-09-15 10:49:36.0]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [2] - [서울시 서대문구]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [4] - [$2a$10$z22jslHT3gdiNhgSqvtAju.QysZISFG43mv92neHMZHx6vUv/U0iW]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [5] - [eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZWF0aGVyMjBAbmF2ZXIuY29tIiwiaWF0IjoxNzMxMTY3Mjc2LCJleHAiOjE3NDkzMTEyNzZ9.yH4CnBDLaJtzwfW9PVnLrDoEoedKrnIRje8C4CNJmNI]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [6] - [테스트20]
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.member.domain.Member#12
+[DEBUG] 2024-11-10 01:01:06.114 [http-nio-8080-exec-8][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@2193c0cb
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㄴㅇㄹㄴㅇㄹㅇㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [2] - [2024-11-10]
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기 성고옹]
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [5] - [2024-11-10]
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694381079900)#19
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@353e9ef0
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][AbstractPlatformTransactionManager.java] JpaTransactionManager - Initiating transaction commit
+[DEBUG] 2024-11-10 01:01:06.115 [http-nio-8080-exec-8][JpaTransactionManager.java] JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1149072389<open>)]
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][TransactionImpl.java] TransactionImpl - committing
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Processing flush-time cascades
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Dirty checking collections
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#19], was: [com.weather.wear.board.entity.Board.uploadImages#19] (uninitialized)
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][EntityPrinter.java] EntityPrinter - Listing entities:
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=2024-11-10, contents=ㅎㅎㄴㅇㄹㄴㅇㄹㅇㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=2024-11-10, id=19, title=빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기 성고옹, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:06.116 [http-nio-8080-exec-8][EntityPrinter.java] EntityPrinter - com.weather.wear.member.domain.Member{password=$2a$10$z22jslHT3gdiNhgSqvtAju.QysZISFG43mv92neHMZHx6vUv/U0iW, userNo=12, createdTime=2024-09-15 10:49:36.0, userName=테스트20, defaultLocation=서울시 서대문구, email=weather20@naver.com, refreshToken=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZWF0aGVyMjBAbmF2ZXIuY29tIiwiaWF0IjoxNzMxMTY3Mjc2LCJleHAiOjE3NDkzMTEyNzZ9.yH4CnBDLaJtzwfW9PVnLrDoEoedKrnIRje8C4CNJmNI}
+[DEBUG] 2024-11-10 01:01:06.118 [http-nio-8080-exec-8][JpaTransactionManager.java] JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+[DEBUG] 2024-11-10 01:01:06.118 [http-nio-8080-exec-8][AbstractMessageConverterMethodProcessor.java] RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[DEBUG] 2024-11-10 01:01:06.120 [http-nio-8080-exec-8][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:06.120 [http-nio-8080-exec-8][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@1005712356 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@820581257 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@264444103 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:06.120 [http-nio-8080-exec-8][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:06.121 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:06.121 [http-nio-8080-exec-8][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#19
+[DEBUG] 2024-11-10 01:01:06.121 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [1] - [37]
+[DEBUG] 2024-11-10 01:01:06.121 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 37
+[DEBUG] 2024-11-10 01:01:06.122 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#37] : 35412911
+[DEBUG] 2024-11-10 01:01:06.122 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:06.122 [http-nio-8080-exec-8][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#19] - using loading instance
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#19] : org.hibernate.collection.spi.PersistentBag@483822455
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#37
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#19] -> org.hibernate.collection.spi.PersistentBag@483822455
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@158e6e0b
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:06.123 [http-nio-8080-exec-8][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#19
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [1] - [38]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 38
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#38] : 94570301
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#19] - using loading instance
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#38
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#19] -> org.hibernate.collection.spi.PersistentBag@483822455
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@158e6e0b
+[DEBUG] 2024-11-10 01:01:06.124 [http-nio-8080-exec-8][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#19]
+[DEBUG] 2024-11-10 01:01:06.127 [http-nio-8080-exec-8][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Writing [java.lang.StackOverflowError]
+[DEBUG] 2024-11-10 01:01:06.128 [http-nio-8080-exec-8][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-11-10 01:01:06.129 [http-nio-8080-exec-8][FrameworkServlet.java] DispatcherServlet - Completed 200 OK
+[DEBUG] 2024-11-10 01:01:24.730 [http-nio-8080-exec-9][FilterChainProxy.java] FilterChainProxy - Securing POST /boards/my-posts
+[DEBUG] 2024-11-10 01:01:24.737 [http-nio-8080-exec-9][FilterChainProxy.java] FilterChainProxy - Secured POST /boards/my-posts
+[DEBUG] 2024-11-10 01:01:24.738 [http-nio-8080-exec-9][LogFormatUtils.java] DispatcherServlet - POST "/boards/my-posts", parameters={}
+[DEBUG] 2024-11-10 01:01:24.738 [http-nio-8080-exec-9][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to com.weather.wear.board.web.BoardController#getMyBoards(HttpServletRequest, BoardPostRequest)
+[DEBUG] 2024-11-10 01:01:24.742 [http-nio-8080-exec-9][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-11-10 01:01:24.743 [http-nio-8080-exec-9][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [BoardPostRequest(title=null, contents=null, email=null, date=null)]
+[DEBUG] 2024-11-10 01:01:24.743 [http-nio-8080-exec-9][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(1031961374<open>)] for JPA transaction
+[DEBUG] 2024-11-10 01:01:24.743 [http-nio-8080-exec-9][AbstractPlatformTransactionManager.java] JpaTransactionManager - Creating new transaction with name [com.weather.wear.board.service.BoardService.getBoardsByUserEmail]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+[DEBUG] 2024-11-10 01:01:24.744 [http-nio-8080-exec-9][TransactionImpl.java] TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+[DEBUG] 2024-11-10 01:01:24.744 [http-nio-8080-exec-9][TransactionImpl.java] TransactionImpl - begin
+[DEBUG] 2024-11-10 01:01:24.745 [http-nio-8080-exec-9][JpaTransactionManager.java] JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@63470fc4]
+[DEBUG] 2024-11-10 01:01:24.748 [http-nio-8080-exec-9][SqlAliasBaseImpl.java] create - Created new SQL alias : b1_0
+[DEBUG] 2024-11-10 01:01:24.748 [http-nio-8080-exec-9][SimpleFromClauseAccessImpl.java] create - Registration of TableGroup [StandardTableGroup(com.weather.wear.board.entity.Board(24694374452900))] with identifierForTableGroup [com.weather.wear.board.entity.Board] for NavigablePath [com.weather.wear.board.entity.Board] 
+[DEBUG] 2024-11-10 01:01:24.748 [http-nio-8080-exec-9][SimpleFromClauseAccessImpl.java] create - Registration of TableGroup [org.hibernate.sql.ast.tree.from.LazyTableGroup@6e187381] with identifierForTableGroup [com.weather.wear.board.entity.Board.member] for NavigablePath [com.weather.wear.board.entity.Board.member] 
+[DEBUG] 2024-11-10 01:01:24.748 [http-nio-8080-exec-9][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@5744008e
+[DEBUG] 2024-11-10 01:01:24.749 [http-nio-8080-exec-9][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.weather.wear.board.entity.Board(24694374452900).member(24694374557400).email) 
+[DEBUG] 2024-11-10 01:01:24.749 [http-nio-8080-exec-9][DomainResultGraphPrinter.java] AST - DomainResult Graph:
+ \-EntityResultImpl [com.weather.wear.board.entity.Board(24694374452900)]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694374452900).contents]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694374452900).createdTime]
+ |  +-EntityFetchSelectImpl [com.weather.wear.board.entity.Board(24694374452900).member]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694374452900).title]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694374452900).updatedTime]
+ |  \-DelayedCollectionFetch [com.weather.wear.board.entity.Board(24694374452900).uploadImages]
+
+[DEBUG] 2024-11-10 01:01:24.749 [http-nio-8080-exec-9][SqlTreePrinter.java] tree - SQL AST Tree:
+    SelectStatement {
+      FromClause {
+        StandardTableGroup (b1 : com.weather.wear.board.entity.Board(24694374452900)) {
+          primaryTableReference : ww_board as b1_0
+          TableGroupJoins {
+            left  join LazyTableGroup (m1 : com.weather.wear.board.entity.Board(24694374452900).member(24694374557400)) {
+            }
+          }
+        }
+      }
+    }
+
+[DEBUG] 2024-11-10 01:01:24.749 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+[DEBUG] 2024-11-10 01:01:24.749 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board(24694374452900).member -> EntitySelectFetchByUniqueKeyInitializer(com.weather.wear.board.entity.Board(24694374452900).member)@314720981 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Board.member])@1856474792)
+	  com.weather.wear.board.entity.Board(24694374452900).uploadImages -> DelayedCollectionInitializer(com.weather.wear.board.entity.Board(24694374452900).uploadImages)@2094961558 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+	  com.weather.wear.board.entity.Board(24694374452900) -> EntityResultInitializer(com.weather.wear.board.entity.Board(24694374452900))@1366782967 (SingleTableEntityPersister(com.weather.wear.board.entity.Board))
+
+[DEBUG] 2024-11-10 01:01:24.749 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        b1_0.Board_ID,
+        b1_0.contents,
+        b1_0.saved_date,
+        b1_0.user_email,
+        b1_0.title,
+        b1_0.updated_date 
+    from
+        ww_board b1_0 
+    where
+        b1_0.user_email=?
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [7]
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 7
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#7
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#7] : 388428170
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.751 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.member.domain.Member -> EntityResultInitializer(com.weather.wear.member.domain.Member)@666302722 (SingleTableEntityPersister(com.weather.wear.member.domain.Member))
+
+[DEBUG] 2024-11-10 01:01:24.752 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        m1_0.user_no,
+        m1_0.saved_date,
+        m1_0.user_def_location,
+        m1_0.user_email,
+        m1_0.user_passwd,
+        m1_0.refresh_token,
+        m1_0.user_name 
+    from
+        ww_user m1_0 
+    where
+        m1_0.user_email=?
+[DEBUG] 2024-11-10 01:01:24.752 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:24.752 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.member.domain.Member): 12
+[DEBUG] 2024-11-10 01:01:24.752 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.member.domain.Member#12] : 659059997
+[DEBUG] 2024-11-10 01:01:24.753 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [2024-09-15 10:49:36.0]
+[DEBUG] 2024-11-10 01:01:24.753 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [서울시 서대문구]
+[DEBUG] 2024-11-10 01:01:24.753 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.753 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [$2a$10$z22jslHT3gdiNhgSqvtAju.QysZISFG43mv92neHMZHx6vUv/U0iW]
+[DEBUG] 2024-11-10 01:01:24.753 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZWF0aGVyMjBAbmF2ZXIuY29tIiwiaWF0IjoxNzMxMTY3Mjc2LCJleHAiOjE3NDkzMTEyNzZ9.yH4CnBDLaJtzwfW9PVnLrDoEoedKrnIRje8C4CNJmNI]
+[DEBUG] 2024-11-10 01:01:24.754 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [테스트20]
+[DEBUG] 2024-11-10 01:01:24.754 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.member.domain.Member#12
+[DEBUG] 2024-11-10 01:01:24.754 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@37a6f61f
+[DEBUG] 2024-11-10 01:01:24.754 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [놀고싶다]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [스타벅스에서 코딩한다]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#7
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [8]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 8
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#8
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#8] : 1205407196
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [놀고싶다]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [스타벅스에서 코딩한다]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#8
+[DEBUG] 2024-11-10 01:01:24.755 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [9]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 9
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#9
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#9] : 600536269
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [거의 다 ㅎㅐㅆ어]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [스타벅스에서 코딩한다]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#9
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [10]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 10
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#10
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#10] : 2066477495
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [거의 다 ㅎㅐㅆ어]
+[DEBUG] 2024-11-10 01:01:24.756 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [스타벅스에서 코딩한다]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#10
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [11]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 11
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#11
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#11] : 1265521051
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [거의 다 ㅎㅐㅆ어222]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [스타벅스222에서 코딩한다]
+[DEBUG] 2024-11-10 01:01:24.757 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#11
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 12
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#12
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#12] : 104766798
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [거의 다 ㅎㅐㅆ어222]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [스타벅스222에서 코딩한다]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#12
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [13]
+[DEBUG] 2024-11-10 01:01:24.759 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 13
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#13
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#13] : 1430630179
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데]
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.760 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#13
+[DEBUG] 2024-11-10 01:01:24.761 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.761 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [14]
+[DEBUG] 2024-11-10 01:01:24.761 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 14
+[DEBUG] 2024-11-10 01:01:24.762 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#14
+[DEBUG] 2024-11-10 01:01:24.762 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#14] : 1722403728
+[DEBUG] 2024-11-10 01:01:24.762 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.762 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.763 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.763 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데]
+[DEBUG] 2024-11-10 01:01:24.763 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.763 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#14
+[DEBUG] 2024-11-10 01:01:24.763 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.764 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [15]
+[DEBUG] 2024-11-10 01:01:24.764 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 15
+[DEBUG] 2024-11-10 01:01:24.764 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#15
+[DEBUG] 2024-11-10 01:01:24.764 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#15] : 77879606
+[DEBUG] 2024-11-10 01:01:24.764 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.765 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.765 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.765 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데]
+[DEBUG] 2024-11-10 01:01:24.765 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.765 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#15
+[DEBUG] 2024-11-10 01:01:24.765 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.766 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [16]
+[DEBUG] 2024-11-10 01:01:24.766 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 16
+[DEBUG] 2024-11-10 01:01:24.766 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#16
+[DEBUG] 2024-11-10 01:01:24.766 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#16] : 455094225
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데]
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [null]
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#16
+[DEBUG] 2024-11-10 01:01:24.767 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [17]
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 17
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#17
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#17] : 1579239434
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [2024-11-09]
+[DEBUG] 2024-11-10 01:01:24.768 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기]
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [2024-11-09]
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#17
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [18]
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 18
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#18
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#18] : 604702566
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.769 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [2024-11-09]
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기]
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [2024-11-09]
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#18
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694374452900)): 19
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694374452900).uploadImages#19
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694374452900)#19] : 1863756678
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:24.770 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㄴㅇㄹㄴㅇㄹㅇㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:24.771 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [2024-11-10]
+[DEBUG] 2024-11-10 01:01:24.771 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기 성고옹]
+[DEBUG] 2024-11-10 01:01:24.771 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [2024-11-10]
+[DEBUG] 2024-11-10 01:01:24.771 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694374452900)#19
+[DEBUG] 2024-11-10 01:01:24.771 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@17581aea
+[DEBUG] 2024-11-10 01:01:24.771 [http-nio-8080-exec-9][AbstractPlatformTransactionManager.java] JpaTransactionManager - Initiating transaction commit
+[DEBUG] 2024-11-10 01:01:24.772 [http-nio-8080-exec-9][JpaTransactionManager.java] JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(1031961374<open>)]
+[DEBUG] 2024-11-10 01:01:24.772 [http-nio-8080-exec-9][TransactionImpl.java] TransactionImpl - committing
+[DEBUG] 2024-11-10 01:01:24.772 [http-nio-8080-exec-9][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Processing flush-time cascades
+[DEBUG] 2024-11-10 01:01:24.772 [http-nio-8080-exec-9][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Dirty checking collections
+[DEBUG] 2024-11-10 01:01:24.772 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#7], was: [com.weather.wear.board.entity.Board.uploadImages#7] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.772 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#8], was: [com.weather.wear.board.entity.Board.uploadImages#8] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#9], was: [com.weather.wear.board.entity.Board.uploadImages#9] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#10], was: [com.weather.wear.board.entity.Board.uploadImages#10] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#11], was: [com.weather.wear.board.entity.Board.uploadImages#11] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#12], was: [com.weather.wear.board.entity.Board.uploadImages#12] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#13], was: [com.weather.wear.board.entity.Board.uploadImages#13] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#14], was: [com.weather.wear.board.entity.Board.uploadImages#14] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#15], was: [com.weather.wear.board.entity.Board.uploadImages#15] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#16], was: [com.weather.wear.board.entity.Board.uploadImages#16] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#17], was: [com.weather.wear.board.entity.Board.uploadImages#17] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.773 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#18], was: [com.weather.wear.board.entity.Board.uploadImages#18] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#19], was: [com.weather.wear.board.entity.Board.uploadImages#19] (uninitialized)
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 0 deletions to 14 objects
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 0 removals to 13 collections
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - Listing entities:
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=놀고싶다, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=8, title=스타벅스에서 코딩한다, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=거의 다 ㅎㅐㅆ어, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=9, title=스타벅스에서 코딩한다, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=거의 다 ㅎㅐㅆ어, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=10, title=스타벅스에서 코딩한다, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=거의 다 ㅎㅐㅆ어222, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=11, title=스타벅스222에서 코딩한다, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=거의 다 ㅎㅐㅆ어222, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=12, title=스타벅스222에서 코딩한다, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=ㅎㅎㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=13, title=빨리 배포를 해야할텐데, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=ㅎㅎㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=14, title=빨리 배포를 해야할텐데, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.774 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=ㅎㅎㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=15, title=빨리 배포를 해야할텐데, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.775 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=놀고싶다, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=7, title=스타벅스에서 코딩한다, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.775 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=null, contents=ㅎㅎㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=null, id=16, title=빨리 배포를 해야할텐데, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.775 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=2024-11-09, contents=ㅎㅎㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=2024-11-09, id=17, title=빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.775 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=2024-11-09, contents=ㅎㅎㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=2024-11-09, id=18, title=빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.775 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=2024-11-10, contents=ㅎㅎㄴㅇㄹㄴㅇㄹㅇㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=2024-11-10, id=19, title=빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기 성고옹, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:24.775 [http-nio-8080-exec-9][EntityPrinter.java] EntityPrinter - com.weather.wear.member.domain.Member{password=$2a$10$z22jslHT3gdiNhgSqvtAju.QysZISFG43mv92neHMZHx6vUv/U0iW, userNo=12, createdTime=2024-09-15 10:49:36.0, userName=테스트20, defaultLocation=서울시 서대문구, email=weather20@naver.com, refreshToken=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZWF0aGVyMjBAbmF2ZXIuY29tIiwiaWF0IjoxNzMxMTY3Mjc2LCJleHAiOjE3NDkzMTEyNzZ9.yH4CnBDLaJtzwfW9PVnLrDoEoedKrnIRje8C4CNJmNI}
+[DEBUG] 2024-11-10 01:01:24.776 [http-nio-8080-exec-9][JpaTransactionManager.java] JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+[DEBUG] 2024-11-10 01:01:24.777 [http-nio-8080-exec-9][AbstractMessageConverterMethodProcessor.java] RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[DEBUG] 2024-11-10 01:01:24.777 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.778 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@1385829383 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1999882225 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@765663242 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.778 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.780 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [7]
+[DEBUG] 2024-11-10 01:01:24.780 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#7
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [13]
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 13
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#13] : 1476549766
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [7]
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#7] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#7] : org.hibernate.collection.spi.PersistentBag@2107949138
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.781 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#13
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#7] -> org.hibernate.collection.spi.PersistentBag@2107949138
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@6dd47cc4
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [7]
+[DEBUG] 2024-11-10 01:01:24.782 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#7
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [14]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 14
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#14] : 646630659
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [7]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#7] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#14
+[DEBUG] 2024-11-10 01:01:24.783 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#7] -> org.hibernate.collection.spi.PersistentBag@2107949138
+[DEBUG] 2024-11-10 01:01:24.784 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@6dd47cc4
+[DEBUG] 2024-11-10 01:01:24.784 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#7]
+[DEBUG] 2024-11-10 01:01:24.788 [http-nio-8080-exec-9][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Writing [java.lang.StackOverflowError]
+[DEBUG] 2024-11-10 01:01:24.789 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.789 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@799821823 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1694552288 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@729588440 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.790 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.791 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [8]
+[DEBUG] 2024-11-10 01:01:24.791 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#8
+[DEBUG] 2024-11-10 01:01:24.791 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [15]
+[DEBUG] 2024-11-10 01:01:24.791 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 15
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#15] : 1972677306
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [8]
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#8] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#8] : org.hibernate.collection.spi.PersistentBag@601712807
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.792 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#15
+[DEBUG] 2024-11-10 01:01:24.793 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#8] -> org.hibernate.collection.spi.PersistentBag@601712807
+[DEBUG] 2024-11-10 01:01:24.793 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@3bb0bcb2
+[DEBUG] 2024-11-10 01:01:24.793 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [8]
+[DEBUG] 2024-11-10 01:01:24.793 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#8
+[DEBUG] 2024-11-10 01:01:24.793 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [16]
+[DEBUG] 2024-11-10 01:01:24.793 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 16
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#16] : 351456813
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [8]
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#8] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.794 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.795 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#16
+[DEBUG] 2024-11-10 01:01:24.795 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#8] -> org.hibernate.collection.spi.PersistentBag@601712807
+[DEBUG] 2024-11-10 01:01:24.795 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@3bb0bcb2
+[DEBUG] 2024-11-10 01:01:24.796 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#8]
+[DEBUG] 2024-11-10 01:01:24.797 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.797 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@90806712 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1442329301 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@1804816884 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.798 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.799 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [9]
+[DEBUG] 2024-11-10 01:01:24.799 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#9
+[DEBUG] 2024-11-10 01:01:24.799 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [17]
+[DEBUG] 2024-11-10 01:01:24.799 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 17
+[DEBUG] 2024-11-10 01:01:24.799 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#17] : 1070088618
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [9]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#9] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#9] : org.hibernate.collection.spi.PersistentBag@1955837204
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#17
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#9] -> org.hibernate.collection.spi.PersistentBag@1955837204
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@63a51ee4
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [9]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#9
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [18]
+[DEBUG] 2024-11-10 01:01:24.800 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 18
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#18] : 2087932439
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [9]
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#9] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#18
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#9] -> org.hibernate.collection.spi.PersistentBag@1955837204
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@63a51ee4
+[DEBUG] 2024-11-10 01:01:24.802 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#9]
+[DEBUG] 2024-11-10 01:01:24.804 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.805 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@341779741 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1208053093 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@1062595200 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.805 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.806 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [10]
+[DEBUG] 2024-11-10 01:01:24.806 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#10
+[DEBUG] 2024-11-10 01:01:24.806 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [19]
+[DEBUG] 2024-11-10 01:01:24.806 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 19
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#19] : 212393622
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [10]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#10] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#10] : org.hibernate.collection.spi.PersistentBag@863708709
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#19
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#10] -> org.hibernate.collection.spi.PersistentBag@863708709
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@1cb93469
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [10]
+[DEBUG] 2024-11-10 01:01:24.807 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#10
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [20]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 20
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#20] : 1684825301
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [10]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#10] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#20
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#10] -> org.hibernate.collection.spi.PersistentBag@863708709
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@1cb93469
+[DEBUG] 2024-11-10 01:01:24.808 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#10]
+[DEBUG] 2024-11-10 01:01:24.809 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.809 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@611312598 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1853478307 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@1001832057 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.809 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.811 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [11]
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#11
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [21]
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 21
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#21] : 1202003864
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [11]
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#11] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.812 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#11] : org.hibernate.collection.spi.PersistentBag@574387959
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#21
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#11] -> org.hibernate.collection.spi.PersistentBag@574387959
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@49ee2463
+[DEBUG] 2024-11-10 01:01:24.814 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [11]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#11
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [22]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 22
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#22] : 738734551
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [11]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#11] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.815 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.816 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#22
+[DEBUG] 2024-11-10 01:01:24.816 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#11] -> org.hibernate.collection.spi.PersistentBag@574387959
+[DEBUG] 2024-11-10 01:01:24.816 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@49ee2463
+[DEBUG] 2024-11-10 01:01:24.816 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#11]
+[DEBUG] 2024-11-10 01:01:24.816 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.818 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@1130778400 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@743489803 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@346371550 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.818 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.819 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:24.819 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#12
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [23]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 23
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#23] : 584230852
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#12] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#12] : org.hibernate.collection.spi.PersistentBag@1822345634
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#23
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#12] -> org.hibernate.collection.spi.PersistentBag@1822345634
+[DEBUG] 2024-11-10 01:01:24.820 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@1fe47d85
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#12
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [24]
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 24
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#24] : 392329461
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#12] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.822 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#24
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#12] -> org.hibernate.collection.spi.PersistentBag@1822345634
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@1fe47d85
+[DEBUG] 2024-11-10 01:01:24.823 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#12]
+[DEBUG] 2024-11-10 01:01:24.824 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.824 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@477333436 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@732495729 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@387758036 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.824 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.825 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [13]
+[DEBUG] 2024-11-10 01:01:24.826 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#13
+[DEBUG] 2024-11-10 01:01:24.826 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [25]
+[DEBUG] 2024-11-10 01:01:24.826 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 25
+[DEBUG] 2024-11-10 01:01:24.826 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#25] : 2144128454
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [13]
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#13] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#13] : org.hibernate.collection.spi.PersistentBag@336584882
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#25
+[DEBUG] 2024-11-10 01:01:24.827 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#13] -> org.hibernate.collection.spi.PersistentBag@336584882
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@d9c77fc
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [13]
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#13
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [26]
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 26
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#26] : 1893468941
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [13]
+[DEBUG] 2024-11-10 01:01:24.829 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#13] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.830 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.830 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.830 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.830 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.830 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.830 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#26
+[DEBUG] 2024-11-10 01:01:24.831 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#13] -> org.hibernate.collection.spi.PersistentBag@336584882
+[DEBUG] 2024-11-10 01:01:24.831 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@d9c77fc
+[DEBUG] 2024-11-10 01:01:24.831 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#13]
+[DEBUG] 2024-11-10 01:01:24.832 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.832 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@2088644659 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1707438215 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@193517652 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.832 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [14]
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#14
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [27]
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 27
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#27] : 1482781089
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [14]
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#14] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#14] : org.hibernate.collection.spi.PersistentBag@2095111486
+[DEBUG] 2024-11-10 01:01:24.833 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#27
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#14] -> org.hibernate.collection.spi.PersistentBag@2095111486
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@15e64881
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [14]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#14
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [28]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 28
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#28] : 1878147584
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [14]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#14] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:jeongwonsideprojectweatherUpload1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#28
+[DEBUG] 2024-11-10 01:01:24.835 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#14] -> org.hibernate.collection.spi.PersistentBag@2095111486
+[DEBUG] 2024-11-10 01:01:24.836 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@15e64881
+[DEBUG] 2024-11-10 01:01:24.836 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#14]
+[DEBUG] 2024-11-10 01:01:24.836 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.836 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@179050175 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1494450738 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@2115398609 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.836 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.837 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [15]
+[DEBUG] 2024-11-10 01:01:24.837 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#15
+[DEBUG] 2024-11-10 01:01:24.837 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [29]
+[DEBUG] 2024-11-10 01:01:24.837 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 29
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#29] : 742211182
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [15]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#15] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#15] : org.hibernate.collection.spi.PersistentBag@1866802016
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#29
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#15] -> org.hibernate.collection.spi.PersistentBag@1866802016
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@613890db
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [15]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#15
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [30]
+[DEBUG] 2024-11-10 01:01:24.839 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 30
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#30] : 752806897
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [15]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#15] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#30
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#15] -> org.hibernate.collection.spi.PersistentBag@1866802016
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@613890db
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#15]
+[DEBUG] 2024-11-10 01:01:24.840 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.841 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@344401056 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1368176144 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@1956072114 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.841 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.842 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [16]
+[DEBUG] 2024-11-10 01:01:24.843 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#16
+[DEBUG] 2024-11-10 01:01:24.843 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [31]
+[DEBUG] 2024-11-10 01:01:24.843 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 31
+[DEBUG] 2024-11-10 01:01:24.843 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#31] : 910831537
+[DEBUG] 2024-11-10 01:01:24.843 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [16]
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#16] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#16] : org.hibernate.collection.spi.PersistentBag@1572360694
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.845 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#31
+[DEBUG] 2024-11-10 01:01:24.846 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#16] -> org.hibernate.collection.spi.PersistentBag@1572360694
+[DEBUG] 2024-11-10 01:01:24.846 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@78c63110
+[DEBUG] 2024-11-10 01:01:24.846 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [16]
+[DEBUG] 2024-11-10 01:01:24.846 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#16
+[DEBUG] 2024-11-10 01:01:24.846 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [32]
+[DEBUG] 2024-11-10 01:01:24.847 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 32
+[DEBUG] 2024-11-10 01:01:24.847 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#32] : 989651100
+[DEBUG] 2024-11-10 01:01:24.847 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [16]
+[DEBUG] 2024-11-10 01:01:24.847 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#16] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.847 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#32
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#16] -> org.hibernate.collection.spi.PersistentBag@1572360694
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@78c63110
+[DEBUG] 2024-11-10 01:01:24.849 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#16]
+[DEBUG] 2024-11-10 01:01:24.851 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.851 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@1796731786 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@267866813 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@489349290 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.852 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.852 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [17]
+[DEBUG] 2024-11-10 01:01:24.852 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#17
+[DEBUG] 2024-11-10 01:01:24.852 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [33]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 33
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#33] : 1851570639
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [17]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#17] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#17] : org.hibernate.collection.spi.PersistentBag@1045428697
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#33
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#17] -> org.hibernate.collection.spi.PersistentBag@1045428697
+[DEBUG] 2024-11-10 01:01:24.854 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@24392b1e
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [17]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#17
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [34]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 34
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#34] : 157021040
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [17]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#17] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.855 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#34
+[DEBUG] 2024-11-10 01:01:24.856 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#17] -> org.hibernate.collection.spi.PersistentBag@1045428697
+[DEBUG] 2024-11-10 01:01:24.856 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@24392b1e
+[DEBUG] 2024-11-10 01:01:24.856 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#17]
+[DEBUG] 2024-11-10 01:01:24.857 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.858 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@915557531 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@485127408 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@2036504565 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.858 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.859 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [18]
+[DEBUG] 2024-11-10 01:01:24.861 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#18
+[DEBUG] 2024-11-10 01:01:24.861 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [35]
+[DEBUG] 2024-11-10 01:01:24.861 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 35
+[DEBUG] 2024-11-10 01:01:24.861 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#35] : 1592220325
+[DEBUG] 2024-11-10 01:01:24.861 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [18]
+[DEBUG] 2024-11-10 01:01:24.862 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#18] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.862 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#18] : org.hibernate.collection.spi.PersistentBag@992204272
+[DEBUG] 2024-11-10 01:01:24.862 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.862 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.863 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.863 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.863 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.863 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#35
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#18] -> org.hibernate.collection.spi.PersistentBag@992204272
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@3357b3b3
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [18]
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#18
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [36]
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 36
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#36] : 977280584
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [18]
+[DEBUG] 2024-11-10 01:01:24.864 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#18] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#36
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#18] -> org.hibernate.collection.spi.PersistentBag@992204272
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@3357b3b3
+[DEBUG] 2024-11-10 01:01:24.865 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#18]
+[DEBUG] 2024-11-10 01:01:24.866 [http-nio-8080-exec-9][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:24.866 [http-nio-8080-exec-9][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@77068692 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@1623308753 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@1854231633 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:24.866 [http-nio-8080-exec-9][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#19
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [37]
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 37
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#37] : 42962630
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#19] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.869 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#19] : org.hibernate.collection.spi.PersistentBag@785782412
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#37
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#19] -> org.hibernate.collection.spi.PersistentBag@785782412
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@466c751a
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#19
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [1] - [38]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 38
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#38] : 2146718045
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:24.870 [http-nio-8080-exec-9][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#19] - using loading instance
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#38
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#19] -> org.hibernate.collection.spi.PersistentBag@785782412
+[DEBUG] 2024-11-10 01:01:24.872 [http-nio-8080-exec-9][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@466c751a
+[DEBUG] 2024-11-10 01:01:24.873 [http-nio-8080-exec-9][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#19]
+[DEBUG] 2024-11-10 01:01:24.873 [http-nio-8080-exec-9][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-11-10 01:01:24.875 [http-nio-8080-exec-9][FrameworkServlet.java] DispatcherServlet - Completed 200 OK
+[DEBUG] 2024-11-10 01:01:28.989 [http-nio-8080-exec-10][FilterChainProxy.java] FilterChainProxy - Securing POST /boards/my-posts
+[DEBUG] 2024-11-10 01:01:28.998 [http-nio-8080-exec-10][FilterChainProxy.java] FilterChainProxy - Secured POST /boards/my-posts
+[DEBUG] 2024-11-10 01:01:28.998 [http-nio-8080-exec-10][LogFormatUtils.java] DispatcherServlet - POST "/boards/my-posts", parameters={}
+[DEBUG] 2024-11-10 01:01:28.998 [http-nio-8080-exec-10][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to com.weather.wear.board.web.BoardController#getMyBoards(HttpServletRequest, BoardPostRequest)
+[DEBUG] 2024-11-10 01:01:29.002 [http-nio-8080-exec-10][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-11-10 01:01:29.003 [http-nio-8080-exec-10][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Read "application/json;charset=UTF-8" to [BoardPostRequest(title=null, contents=null, email=null, date=2024-11-10)]
+[DEBUG] 2024-11-10 01:01:29.003 [http-nio-8080-exec-10][JpaTransactionManager.java] JpaTransactionManager - Found thread-bound EntityManager [SessionImpl(254326462<open>)] for JPA transaction
+[DEBUG] 2024-11-10 01:01:29.003 [http-nio-8080-exec-10][AbstractPlatformTransactionManager.java] JpaTransactionManager - Creating new transaction with name [com.weather.wear.board.service.BoardService.getBoardsByUserEmailAndDate]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+[DEBUG] 2024-11-10 01:01:29.004 [http-nio-8080-exec-10][TransactionImpl.java] TransactionImpl - On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+[DEBUG] 2024-11-10 01:01:29.004 [http-nio-8080-exec-10][TransactionImpl.java] TransactionImpl - begin
+[DEBUG] 2024-11-10 01:01:29.005 [http-nio-8080-exec-10][JpaTransactionManager.java] JpaTransactionManager - Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@23cf7b9b]
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][SqlAliasBaseImpl.java] create - Created new SQL alias : b1_0
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][SimpleFromClauseAccessImpl.java] create - Registration of TableGroup [StandardTableGroup(com.weather.wear.board.entity.Board(24694381079900))] with identifierForTableGroup [com.weather.wear.board.entity.Board] for NavigablePath [com.weather.wear.board.entity.Board] 
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][SimpleFromClauseAccessImpl.java] create - Registration of TableGroup [org.hibernate.sql.ast.tree.from.LazyTableGroup@30857ee5] with identifierForTableGroup [com.weather.wear.board.entity.Board.member] for NavigablePath [com.weather.wear.board.entity.Board.member] 
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@6918b41a
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.weather.wear.board.entity.Board(24694381079900).member(24694381300600).email) 
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmParameter : org.hibernate.query.sqm.tree.expression.SqmJpaCriteriaParameterWrapper@528ea978
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][BaseSqmToSqlAstConverter.java] BaseSqmToSqlAstConverter - Determining mapping-model type for SqmPath : SqmBasicValuedSimplePath(com.weather.wear.board.entity.Board(24694381079900).createdTime) 
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][DomainResultGraphPrinter.java] AST - DomainResult Graph:
+ \-EntityResultImpl [com.weather.wear.board.entity.Board(24694381079900)]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).contents]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).createdTime]
+ |  +-EntityFetchSelectImpl [com.weather.wear.board.entity.Board(24694381079900).member]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).title]
+ |  +-BasicFetch [com.weather.wear.board.entity.Board(24694381079900).updatedTime]
+ |  \-DelayedCollectionFetch [com.weather.wear.board.entity.Board(24694381079900).uploadImages]
+
+[DEBUG] 2024-11-10 01:01:29.006 [http-nio-8080-exec-10][SqlTreePrinter.java] tree - SQL AST Tree:
+    SelectStatement {
+      FromClause {
+        StandardTableGroup (b1 : com.weather.wear.board.entity.Board(24694381079900)) {
+          primaryTableReference : ww_board as b1_0
+          TableGroupJoins {
+            left  join LazyTableGroup (m1 : com.weather.wear.board.entity.Board(24694381079900).member(24694381300600)) {
+            }
+          }
+        }
+      }
+    }
+
+[DEBUG] 2024-11-10 01:01:29.007 [http-nio-8080-exec-10][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+[DEBUG] 2024-11-10 01:01:29.007 [http-nio-8080-exec-10][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board(24694381079900).uploadImages -> DelayedCollectionInitializer(com.weather.wear.board.entity.Board(24694381079900).uploadImages)@633155537 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+	  com.weather.wear.board.entity.Board(24694381079900) -> EntityResultInitializer(com.weather.wear.board.entity.Board(24694381079900))@1045700565 (SingleTableEntityPersister(com.weather.wear.board.entity.Board))
+	  com.weather.wear.board.entity.Board(24694381079900).member -> EntitySelectFetchByUniqueKeyInitializer(com.weather.wear.board.entity.Board(24694381079900).member)@804274552 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Board.member])@1856474792)
+
+[DEBUG] 2024-11-10 01:01:29.007 [http-nio-8080-exec-10][SqlStatementLogger.java] SQL - 
+    select
+        b1_0.Board_ID,
+        b1_0.contents,
+        b1_0.saved_date,
+        b1_0.user_email,
+        b1_0.title,
+        b1_0.updated_date 
+    from
+        ww_board b1_0 
+    where
+        b1_0.user_email=? 
+        and b1_0.saved_date=?
+[DEBUG] 2024-11-10 01:01:29.008 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:29.008 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board(24694381079900)): 19
+[DEBUG] 2024-11-10 01:01:29.010 [http-nio-8080-exec-10][AbstractCollectionInitializer.java] collection - (DelayedCollectionInitializer) Current row collection key : com.weather.wear.board.entity.Board(24694381079900).uploadImages#19
+[DEBUG] 2024-11-10 01:01:29.010 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.board.entity.Board(24694381079900)#19] : 1589859536
+[DEBUG] 2024-11-10 01:01:29.010 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:29.011 [http-nio-8080-exec-10][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:29.011 [http-nio-8080-exec-10][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.member.domain.Member -> EntityResultInitializer(com.weather.wear.member.domain.Member)@1040379226 (SingleTableEntityPersister(com.weather.wear.member.domain.Member))
+
+[DEBUG] 2024-11-10 01:01:29.011 [http-nio-8080-exec-10][SqlStatementLogger.java] SQL - 
+    select
+        m1_0.user_no,
+        m1_0.saved_date,
+        m1_0.user_def_location,
+        m1_0.user_email,
+        m1_0.user_passwd,
+        m1_0.refresh_token,
+        m1_0.user_name 
+    from
+        ww_user m1_0 
+    where
+        m1_0.user_email=?
+[DEBUG] 2024-11-10 01:01:29.012 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [0] - [12]
+[DEBUG] 2024-11-10 01:01:29.012 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Hydrated EntityKey (com.weather.wear.member.domain.Member): 12
+[DEBUG] 2024-11-10 01:01:29.012 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Created new entity instance [com.weather.wear.member.domain.Member#12] : 1514344395
+[DEBUG] 2024-11-10 01:01:29.012 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [1] - [2024-09-15 10:49:36.0]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [2] - [서울시 서대문구]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [3] - [weather20@naver.com]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [4] - [$2a$10$z22jslHT3gdiNhgSqvtAju.QysZISFG43mv92neHMZHx6vUv/U0iW]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [5] - [eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZWF0aGVyMjBAbmF2ZXIuY29tIiwiaWF0IjoxNzMxMTY3Mjc2LCJleHAiOjE3NDkzMTEyNzZ9.yH4CnBDLaJtzwfW9PVnLrDoEoedKrnIRje8C4CNJmNI]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [6] - [테스트20]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.member.domain.Member#12
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@738251e4
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [1] - [ㅎㅎㄴㅇㄹㄴㅇㄹㅇㅎㅎㅎㅎ2]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [2] - [2024-11-10]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [4] - [빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기 성고옹]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [5] - [2024-11-10]
+[DEBUG] 2024-11-10 01:01:29.013 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityResultInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board(24694381079900)#19
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@26dddc1a
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][AbstractPlatformTransactionManager.java] JpaTransactionManager - Initiating transaction commit
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][JpaTransactionManager.java] JpaTransactionManager - Committing JPA transaction on EntityManager [SessionImpl(254326462<open>)]
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][TransactionImpl.java] TransactionImpl - committing
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Processing flush-time cascades
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Dirty checking collections
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][Collections.java] Collections - Collection found: [com.weather.wear.board.entity.Board.uploadImages#19], was: [com.weather.wear.board.entity.Board.uploadImages#19] (uninitialized)
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][AbstractFlushingEventListener.java] AbstractFlushingEventListener - Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][EntityPrinter.java] EntityPrinter - Listing entities:
+[DEBUG] 2024-11-10 01:01:29.014 [http-nio-8080-exec-10][EntityPrinter.java] EntityPrinter - com.weather.wear.board.entity.Board{updatedTime=2024-11-10, contents=ㅎㅎㄴㅇㄹㄴㅇㄹㅇㅎㅎㅎㅎ2, member=com.weather.wear.member.domain.Member#12, createdTime=2024-11-10, id=19, title=빨리 배포를 해야할텐데..ㅎㅎ 날짜별로 오게하하기 성고옹, uploadImages=<uninitialized>}
+[DEBUG] 2024-11-10 01:01:29.015 [http-nio-8080-exec-10][EntityPrinter.java] EntityPrinter - com.weather.wear.member.domain.Member{password=$2a$10$z22jslHT3gdiNhgSqvtAju.QysZISFG43mv92neHMZHx6vUv/U0iW, userNo=12, createdTime=2024-09-15 10:49:36.0, userName=테스트20, defaultLocation=서울시 서대문구, email=weather20@naver.com, refreshToken=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZWF0aGVyMjBAbmF2ZXIuY29tIiwiaWF0IjoxNzMxMTY3Mjc2LCJleHAiOjE3NDkzMTEyNzZ9.yH4CnBDLaJtzwfW9PVnLrDoEoedKrnIRje8C4CNJmNI}
+[DEBUG] 2024-11-10 01:01:29.015 [http-nio-8080-exec-10][JpaTransactionManager.java] JpaTransactionManager - Not closing pre-bound JPA EntityManager after transaction
+[DEBUG] 2024-11-10 01:01:29.016 [http-nio-8080-exec-10][AbstractMessageConverterMethodProcessor.java] RequestResponseBodyMethodProcessor - Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+[DEBUG] 2024-11-10 01:01:29.016 [http-nio-8080-exec-10][JdbcSelectExecutorStandardImpl.java] exec - Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][NavigablePathMapToInitializer.java] results - Initializer list:
+	  com.weather.wear.board.entity.Board.uploadImages.{element}.board -> EntitySelectFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element}.board)@975613778 (ToOneAttributeMapping(NavigableRole[com.weather.wear.board.entity.Images.board])@1506532122)
+	  com.weather.wear.board.entity.Board.uploadImages.{element} -> EntityJoinedFetchInitializer(com.weather.wear.board.entity.Board.uploadImages.{element})@2019148426 (EntityCollectionPart(com.weather.wear.board.entity.Board.uploadImages#{element})@911137332)
+	  com.weather.wear.board.entity.Board.uploadImages -> BagInitializer(com.weather.wear.board.entity.Board.uploadImages)@431337748 (PluralAttribute(com.weather.wear.board.entity.Board.uploadImages))
+
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][SqlStatementLogger.java] SQL - 
+    select
+        ui1_0.boardId,
+        ui1_0.images_ID,
+        ui1_0.extension,
+        ui1_0.fullPath,
+        ui1_0.size,
+        ui1_0.storedFileName,
+        ui1_0.uploadFileName 
+    from
+        ww_board_images ui1_0 
+    where
+        ui1_0.boardId=?
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#19
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [1] - [37]
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 37
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#37] : 1751658155
+[DEBUG] 2024-11-10 01:01:29.017 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#19] - using loading instance
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Responsible for loading collection [com.weather.wear.board.entity.Board.uploadImages#19] : org.hibernate.collection.spi.PersistentBag@1939158513
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [4] - [249744]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1411737121341.jpeg]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#37
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#19] -> org.hibernate.collection.spi.PersistentBag@1939158513
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@5c610fa3
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][AbstractCollectionInitializer.java] collection - (BagInitializer) Current row collection key : com.weather.wear.board.entity.Board.uploadImages#19
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [1] - [38]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Hydrated EntityKey (com.weather.wear.board.entity.Board.uploadImages.{element}): 38
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Created new entity instance [com.weather.wear.board.entity.Board.uploadImages.{element}#38] : 166555176
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [0] - [19]
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][EntitySelectFetchInitializer.java] entity - (EntitySelectFetchInitializer) Found existing loading entry [com.weather.wear.board.entity.Board.uploadImages.{element}.board#19] - using loading instance
+[DEBUG] 2024-11-10 01:01:29.018 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [2] - [null]
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [3] - [C:\jeongwon\sideproject\weatherUpload\1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [4] - [270305]
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [5] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][BasicResultAssembler.java] results - Extracted JDBC value [6] - [1419832901313.jpeg]
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][AbstractEntityInitializer.java] entity - (EntityJoinedFetchInitializer) Done materializing entityInstance : com.weather.wear.board.entity.Board.uploadImages.{element}#38
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][AbstractImmediateCollectionInitializer.java] collection - (BagInitializer) Reading element from row for collection [com.weather.wear.board.entity.Board.uploadImages#19] -> org.hibernate.collection.spi.PersistentBag@1939158513
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][StandardRowReader.java] loading - Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@5c610fa3
+[DEBUG] 2024-11-10 01:01:29.019 [http-nio-8080-exec-10][ResultsHelper.java] ResultsHelper - Collection fully initialized: [com.weather.wear.board.entity.Board.uploadImages#19]
+[DEBUG] 2024-11-10 01:01:29.021 [http-nio-8080-exec-10][LogFormatUtils.java] RequestResponseBodyMethodProcessor - Writing [java.lang.StackOverflowError]
+[DEBUG] 2024-11-10 01:01:29.022 [http-nio-8080-exec-10][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+[DEBUG] 2024-11-10 01:01:29.024 [http-nio-8080-exec-10][FrameworkServlet.java] DispatcherServlet - Completed 200 OK

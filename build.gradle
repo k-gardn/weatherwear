@@ -68,6 +68,10 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 처리 관련 의존성
 
+	//aws lambda
+	implementation group: 'com.amazonaws.serverless', name: 'aws-serverless-java-container-core', version: '1.9.3'
+
+
 	// 기존 롬복 이외도, jakarta 와 querydsl 어노테이션 추가 (spring boot 3.0 이상은 jakarta 대신 jakarta 사용)
 	annotationProcessor(
 			"org.projectlombok:lombok",

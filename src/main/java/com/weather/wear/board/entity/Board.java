@@ -1,10 +1,16 @@
 package com.weather.wear.board.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.weather.wear.member.domain.Member;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +33,29 @@ public class Board {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String contents;
 
-    @OneToMany(mappedBy = "board")
+    @CreationTimestamp
+    @Column(name = "saved_date", updatable = false)
+    private LocalDate createdTime;
+
+    @CreationTimestamp
+    @Column(name = "updated_date", updatable = false)
+    private LocalDate  updatedTime;
+
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @JsonManagedReference  // 순환 참조 방지
     private List<Images> uploadImages = new ArrayList<>();
 
-    public Board(String title, String contents){
+    @ManyToOne
+    @JoinColumn(name = "user_email", referencedColumnName = "user_email")  // 수정된 부분
+    private Member member;
+
+    @Builder
+    public Board(String title, String contents, Member member, LocalDate  createdTime, LocalDate  updatedTime) {
         this.title = title;
         this.contents = contents;
+        this.member = member;
+        this.createdTime = createdTime;
+        this.updatedTime = updatedTime;
     }
 
     public void updateBoard(String title, String contents){

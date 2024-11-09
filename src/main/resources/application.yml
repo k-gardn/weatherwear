@@ -13,11 +13,12 @@ spring:
         username: root
         password: Rlarkems10#
         driver-class-name: org.mariadb.jdbc.Driver
+    # 정적 파일 변경 실시간 반영
     devtools:
-        livereload:
-            enabled: true
         restart:
-            enabled: true
+            enabled: 'false'
+        livereload:
+            enabled: 'true'
 #   cloudtype에서 작업
 #    datasource:
 #        host: ${DB_HOST}
@@ -38,7 +39,7 @@ jwt:
 servlet:
     multipart:
         enabled: true
-        location: C:\jeongwon\sideproject\weatherUpload
+        location: C:\\jeongwon\\sideproject\\weatherUpload\\
         max-request-size: 30MB #한 번에 최대 업로드 가능 용량
         max-file-size: 10MB # 파일 하나의 최대 크기
 

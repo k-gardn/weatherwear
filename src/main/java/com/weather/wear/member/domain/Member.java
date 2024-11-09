@@ -54,13 +54,13 @@ public class Member {
     }
 
     // 복사 생성자 (선택사항, 필요에 따라 생성)
-    public Member(Member member) {
-        this.email = member.getEmail();
-        this.password = member.getPassword();
-        this.userName = member.getUserName();
-        this.userNo = member.getUserNo();
-        this.createdTime = member.getCreatedTime();
-    }
+//    public Member(Member member) {
+//        this.email = member.getEmail();
+//        this.password = member.getPassword();
+//        this.userName = member.getUserName();
+//        this.userNo = member.getUserNo();
+//        this.createdTime = member.getCreatedTime();
+//    }
 
 
     public boolean checkPassword(String password){

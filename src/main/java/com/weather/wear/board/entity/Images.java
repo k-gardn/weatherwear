@@ -1,5 +1,6 @@
 package com.weather.wear.board.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -39,6 +40,7 @@ public class Images {
 
     @ManyToOne
     @JoinColumn(name = "boardId")
+    @JsonBackReference  // 순환 참조 방지
     private Board board;
 
     public Images(String uploadFileName, String storedFileName, String fullPath,
