@@ -97,6 +97,7 @@ public class SecurityConfig {
         config.addAllowedOrigin("*"); // 필요한 도메인으로 변경
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+        config.addAllowedOriginPattern("*");
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

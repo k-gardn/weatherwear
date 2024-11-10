@@ -8,10 +8,16 @@ spring:
 #        active:dev
 
 #   local에서 작업
+#    datasource:
+#        url: jdbc:mariadb://localhost:3306/weatherwear?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
+#        username: root
+#        password: Rlarkems10#
+#        driver-class-name: org.mariadb.jdbc.Driver
+#   AWS 배포 시
     datasource:
-        url: jdbc:mariadb://localhost:3306/weatherwear?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
-        username: root
-        password: Rlarkems10#
+        url: jdbc:mariadb://weatherwear-database-02.cv624a6qaioo.ap-northeast-2.rds.amazonaws.com:3306/innodb?useSSL=false&serverTimezone=UTC&autoReconnect=true&characterEncoding=UTF-8
+        username: admin
+        password: weatherwear10
         driver-class-name: org.mariadb.jdbc.Driver
     # 정적 파일 변경 실시간 반영
     devtools:
