@@ -2,6 +2,7 @@ package com.weather.wear.member.web;
 
 import com.weather.wear.common.JwtTokenProvider;
 import com.weather.wear.member.domain.Member;
+import com.weather.wear.member.dto.MemberRegister;
 import com.weather.wear.member.service.MemberService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -107,23 +108,28 @@ public class MainController {
 
     //회원가입
     @PostMapping("/user/register")
-    public Map<String, Object> userRegister(@RequestBody Member login) {
+    public Map<String, Object> userRegister(@RequestBody MemberRegister MRDto) {
+
         Map<String, Object> rstMap = new HashMap<>();
-        Member user;
-        String email = login.getEmail();
-        user = memberService.findByEmail(email);
+        Member userCheck;
+        String email = MRDto.getEmail();
+        userCheck = memberService.findByEmail(email);
 
         // 기존 회원 -> 이미 가입된 회원입니다.
-        if(user != null) rstMap.put("errorMsg", "이미 가입된 회원입니다.");
-        // 신규 회원 -> db에 정보 저장.
-        else{
+        if (userCheck != null) rstMap.put("errorMsg", "이미 가입된 회원입니다.");
+            // 신규 회원 -> db에 정보 저장.
+        else {
             // 비밀번호 암호화
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            String encodedPassword = passwordEncoder.encode(login.getPassword());
-            login.setPassword(encodedPassword);
+            String encodedPassword = passwordEncoder.encode(MRDto.getPassword());
+//            MRDto.setPassword(encodedPassword);
 
             //회원정보저장
-            memberService.register(login);
+            Member user = Member.builder()
+                    .email(email)
+                    .userName(MRDto.getUserName())
+                    .userPw(encodedPassword).build();
+            memberService.register(user);
             rstMap.put("success", true);
             rstMap.put("successMsg", "회원 가입 성공");
         }
