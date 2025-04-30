@@ -54,55 +54,35 @@ public class MainController {
     //로그인
     @Transactional
     @PostMapping("/user/login")
-    public Map<String, Object> login(@RequestBody Member login) {
-        Map<String, Object> rstMap = new HashMap<>();
-        Map<String, Object> tokenMap = new HashMap<>();
-        Member user;
-//        Token token = null;
-        try {
-            String email = login.getEmail();
-            String password = login.getPassword();
+    public ResponseEntity<?> login(@RequestBody Member login) {
+        String email = login.getEmail();
+        String password = login.getPassword();
 
-            log.debug("email : {}", email);
-            log.debug("password : {}", password);
+        log.debug("email : {}", email);
+        log.debug("password : {}", password);
 
-            user = memberService.findByEmail(email);
-            // 회원일 경우
-            if (user != null) {
-                // BCryptPasswordEncoder를 사용해 비밀번호를 비교
-                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-                if (passwordEncoder.matches(password, user.getPassword())) {
-                    // 비밀번호가 맞을 경우
-                    // 로그인 성공 시 JWT 토큰 생성
-                    String accessToken = jwtTokenProvider.generateAccessToken(user.getEmail());
-                    String refreshToken = jwtTokenProvider.generateRefreshToken(user.getEmail());
-
-                    tokenMap.put("accessToken", accessToken);  // 클라이언트에 JWT 토큰 전달
-                    tokenMap.put("refreshToken", refreshToken);  // 클라이언트에 JWT 토큰 전달
-
-                    //db에 refresh token 저장
-                    if(refreshToken != null) {
-                        user.setRefreshToken(refreshToken); // Transactional로 인해 save를 따로 하지 않아도 db에 저장가능
-                    }
-                    rstMap.put("data", tokenMap);
-                    rstMap.put("success", true);
-                } else {
-                    // 비밀번호가 틀린 경우
-                    rstMap.put("success", false);
-                    rstMap.put("errorMsg", "Incorrect password.");
-                }
-            } else {
-                // 회원이 아닌 경우
-                rstMap.put("success", false);
-                rstMap.put("successMsg", "User not found.");
-            }
-        } catch (Exception e) {
-            log.error("Error during login process", e);
-            rstMap.put("success", false);
-            rstMap.put("errorMsg", e.getLocalizedMessage());
-            e.printStackTrace(System.out);
+        Member user = memberService.findByEmail(email);
+        if (user == null) {
+            throw new BaseException(ErrorResponseStatus.NOT_FOUND_USER);
         }
-        return rstMap;
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new BaseException(ErrorResponseStatus.INCORRECT_PASSWORD);
+        }
+
+        String accessToken = jwtTokenProvider.generateAccessToken(user.getEmail());
+        String refreshToken = jwtTokenProvider.generateRefreshToken(user.getEmail());
+
+        if (refreshToken != null) {
+            user.setRefreshToken(refreshToken);
+        }
+
+        Map<String, String> tokenMap = new HashMap<>();
+        tokenMap.put("accessToken", accessToken);
+        tokenMap.put("refreshToken", refreshToken);
+
+        return ResponseEntity.ok(SuccessResponse.of(tokenMap));
     }
 
     //회원가입
