@@ -1,13 +1,17 @@
 package com.weather.wear.member.service;
 
-import com.weather.wear.common.BaseException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.weather.wear.common.exception.BaseException;
 import com.weather.wear.common.JwtTokenProvider;
 import com.weather.wear.common.TokenService;
+import com.weather.wear.common.response.ErrorResponseStatus;
+import com.weather.wear.common.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 

@@ -22,6 +22,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtTokenProvider jwtProvider; // JWT 검증 로직을 처리하는 클래스
     private final TokenService tokenService; // AccessToken과 RefreshToken 검증을 처리하는 서비스
 
+    private static final List<String> EXCLUDE_URLS = List.of(
+            "/user/register", "/user/login", "/"
+    );
+
     public JwtAuthenticationFilter(JwtTokenProvider jwtProvider, TokenService tokenService) {
         this.jwtProvider = jwtProvider;
         this.tokenService = tokenService;
@@ -31,6 +35,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+
+        String path = request.getRequestURI();
+        if (EXCLUDE_URLS.contains(path)) {
+            filterChain.doFilter(request, response); // 그냥 통과시킴
+            return;
+        }
 
         String authorizationHeader = request.getHeader("Authorization");
         String token = null;

@@ -1,6 +1,7 @@
 package com.weather.wear.common;
 
-import com.weather.wear.member.domain.Member;
+import com.weather.wear.common.exception.BaseException;
+import com.weather.wear.common.response.ErrorResponseStatus;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
@@ -13,7 +14,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactorySpi;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -82,11 +82,11 @@ public class JwtTokenProvider {
             return claims.getBody().getExpiration().after(new Date());
         } catch (ExpiredJwtException ignored) {
             // 만료된 토큰 예외 처리
-            throw new BaseException(BaseResponseStatus.EXPIRED_JWT);
+            throw new BaseException(ErrorResponseStatus.EXPIRED_JWT);
 //            return false;
         } catch (Exception e) {
             // 올바르지 않은 토큰일 경우 예외 발생
-            throw new BaseException(BaseResponseStatus.INVALID_JWT);
+            throw new BaseException(ErrorResponseStatus.INVALID_JWT);
         }
     }
 

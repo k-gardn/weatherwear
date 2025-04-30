@@ -1,9 +1,3 @@
-buildscript {
-	ext {
-		queryDslVersion = "5.0.0"
-	}
-}
-
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
@@ -13,15 +7,11 @@ plugins {
 group = 'com.weather'
 version = '0.0.1-SNAPSHOT'
 
+def queryDslVersion = "5.0.0"
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
-	}
-}
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
 	}
 }
 
@@ -29,63 +19,71 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+	all {
+		exclude module: 'spring-boot-starter-logging'	// SQL 쿼리를 타입 안전하게 작성하게 해주는 라이브러리
+	}
+}
+
 dependencies {
+	// Spring Boot Starters
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.session:spring-session-core'
-	compileOnly 'org.projectlombok:lombok'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// Database Driver
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	// QueryDSL
+//	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}:jakarta"
+	compileOnly "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"
+	annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"
+
+	// Jakarta Annotation
+	annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
+	annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+
+	// ModelMapper
+	// DTO �� Entity 변환을 편리하게 자동처리
+	implementation 'org.modelmapper:modelmapper:3.1.1'
+
+	// Log4j2 (Spring Boot와 연동)
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+	implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+	// YAML 파일 파싱
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.16.1'
+
+	// JWT 인증
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// AWS Lambda
+//	implementation 'com.amazonaws.serverless:aws-serverless-java-container-core:1.9.3'
+
+	// DevTools
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// Test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	// querydsl 라이브러리
-	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}:jakarta" // 기존에는 그냥 jpa, 3 버전 이상은 :jakarta 추가
-	implementation "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"
-
-	// apt(annotation processing tool), Q도메인 생성. 컴파일 시에만 사용됨
-	implementation "com.querydsl:querydsl-core"
-	implementation "com.querydsl:querydsl-sql"
-	compileOnly "com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"
-
-	// Spring Security 의존성 추가
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	// modelMapper: DTO 와 엔티티 간 변환 처리해주는 라이브러리
-	implementation 'org.modelmapper:modelmapper:3.1.1'
-
-	// 로그찍기
-	implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
-	implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
-	implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.2'
-	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.16.1'
-
-	// Spring jwt 토큰 인증
-	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
-	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JSON 처리 관련 의존성
-
-	//aws lambda
-	implementation group: 'com.amazonaws.serverless', name: 'aws-serverless-java-container-core', version: '1.9.3'
-
-
-	// 기존 롬복 이외도, jakarta 와 querydsl 어노테이션 추가 (spring boot 3.0 이상은 jakarta 대신 jakarta 사용)
-	annotationProcessor(
-			"org.projectlombok:lombok",
-			"jakarta.persistence:jakarta.persistence-api",
-			"jakarta.annotation:jakarta.annotation-api",
-			"com.querydsl:querydsl-apt:${queryDslVersion}:jakarta"); // querydsl-apt:jpa -> querydsl-apt:jakarta
-
-
+	// Spring Boot Configuration Processor (application.yml 자동완성)
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 }
-configurations {
-	configureEach {
-		exclude module: 'spring-boot-starter-logging'
-	}
-}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
