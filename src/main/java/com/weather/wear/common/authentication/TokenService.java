@@ -67,4 +67,26 @@ public class TokenService {
         }
     }
 
+    // DB에 저장된 refreshToken 삭제
+    // TokenService.java
+    public boolean deleteRefreshToken(String userEmail) {
+        try {
+            Member member = userRepository.findByEmail(userEmail);
+            if (member == null) {
+                log.warn("[deleteRefreshToken] 사용자 정보 없음: {}", userEmail);
+                return false; // 사용자가 없으면 false 반환
+            }
+
+            member.setRefreshToken(null);
+            member.setRefreshTokenExpiry(null);
+            userRepository.save(member);
+
+            log.debug("[deleteRefreshToken] refreshToken 삭제 성공: {}", userEmail);
+            return true; // 삭제 성공
+        } catch (Exception e) {
+            log.error("[deleteRefreshToken] 예외 발생", e);
+            return false; // 예외 발생 시 false 반환
+        }
+    }
+
 }

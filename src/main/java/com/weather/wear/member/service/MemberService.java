@@ -23,18 +23,11 @@ public class MemberService {
     }
 
     public Member findByEmail(String email){
-//        Member user;
-//        user = userRepository.findByEmail(email);
         return userRepository.findByEmail(email);
     }
 
     public void register(Member member){
         userRepository.save(member);
     }
-
-//    public void saveRefToken(Token token){
-//        tokenRepository.save(token);
-//    }
-
 
 }

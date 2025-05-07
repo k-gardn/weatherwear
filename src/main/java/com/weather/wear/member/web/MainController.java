@@ -9,6 +9,7 @@ import com.weather.wear.common.response.ErrorResponseStatus;
 import com.weather.wear.common.response.SuccessResponse;
 import com.weather.wear.common.response.SuccessStatus;
 import com.weather.wear.member.domain.Member;
+import com.weather.wear.member.dto.PasswordChangeRequest;
 import com.weather.wear.member.dto.MemberRegister;
 import com.weather.wear.member.service.MemberService;
 import jakarta.transaction.Transactional;
@@ -161,7 +162,32 @@ public class MainController {
         return ResponseEntity.ok(new TokenRefreshResponse(newAccessToken));
     }
 
+    @PostMapping("/user/logout")
+    public ResponseEntity<?> logout(@AuthenticationPrincipal String userEmail) {
+//        String email = userDetails.getUsername(); // 또는 JwtTokenProvider로 email 추출
+        boolean deleted = tokenService.deleteRefreshToken(userEmail);
+        if (!deleted) {
+            throw new BaseException(ErrorResponseStatus.INTERNAL_SERVER_ERROR);
+        }
+        return ResponseEntity.ok(SuccessResponse.of("로그아웃 완료"));
+    }
 
+    @PostMapping("/user/change-password")
+    public ResponseEntity<?> changePassword(@AuthenticationPrincipal String userEmail,
+                                            @RequestBody PasswordChangeRequest request) {
+        Member member = memberService.findByEmail(userEmail);
+
+        if (!passwordEncoder.matches(request.getCurrentPassword(), member.getPassword())) {
+            throw new BaseException(ErrorResponseStatus.INCORRECT_PASSWORD);
+        }
+
+        member.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        member.setRefreshToken(null); // refreshToken 제거
+        member.setRefreshTokenExpiry(null);
+        memberService.register(member);
+
+        return ResponseEntity.ok(SuccessResponse.of("비밀번호 변경 완료 → 다시 로그인 필요"));
+    }
 }
 
 
