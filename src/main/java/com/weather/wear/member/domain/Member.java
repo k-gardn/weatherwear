@@ -35,6 +35,9 @@ public class Member {
     @Column(name = "refresh_token")
     private String refreshToken;
 
+    @Column(name = "refresh_token_expiry")
+    private Timestamp refreshTokenExpiry;
+
     @Column(name = "user_def_location")
     private String defaultLocation;
 
@@ -43,25 +46,18 @@ public class Member {
     // 생성자, 기타 메서드들
 // 빌더를 이용한 생성자
     @Builder
-    public Member(String email, String userPw, String userName, Long userNo, Timestamp createdTime, String refreshToken, String defaultLocation) {
+    public Member(String email, String userPw, String userName, Long userNo,
+                  Timestamp createdTime, String refreshToken, Timestamp refreshTokenExpiry,
+                  String defaultLocation) {
         this.email = email;
         this.password = userPw;
         this.userName = userName;
         this.userNo = userNo;
         this.createdTime = createdTime;
         this.refreshToken = refreshToken;
+        this.refreshTokenExpiry = refreshTokenExpiry;
         this.defaultLocation = defaultLocation;
     }
-
-    // 복사 생성자 (선택사항, 필요에 따라 생성)
-//    public Member(Member member) {
-//        this.email = member.getEmail();
-//        this.password = member.getPassword();
-//        this.userName = member.getUserName();
-//        this.userNo = member.getUserNo();
-//        this.createdTime = member.getCreatedTime();
-//    }
-
 
     public boolean checkPassword(String password){
         return this.password.equals(password); // 비밀번호 검증

@@ -1,12 +1,20 @@
-package com.weather.wear.common;
+package com.weather.wear.common.authentication;
 
+import com.weather.wear.common.exception.BaseException;
+import com.weather.wear.common.response.ErrorResponseStatus;
 import com.weather.wear.member.domain.Member;
 import com.weather.wear.member.repository.UserRepository;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+
 @Service
 public class TokenService {
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private UserRepository userRepository;
@@ -39,6 +47,23 @@ public class TokenService {
         if (user != null) {
             user.setRefreshToken(refreshToken);
             userRepository.save(user);
+        }
+    }
+
+    public void saveRefreshToken(String email, String refreshToken, Timestamp expiry) {
+        try {
+            Member member = userRepository.findByEmail(email);
+            if (member == null) {// login Controller에서 이미 검증해서 안해도 될 것 같기는한데,,,
+                // 회원이 존재하지 않으면 401 Unauthorized를 던짐
+                throw new BaseException(ErrorResponseStatus.NOT_FOUND_USER);
+            }
+            member.setRefreshToken(refreshToken);
+            member.setRefreshTokenExpiry(expiry);
+            userRepository.save(member);
+            log.debug("[saveRefreshToken] saved successfully");
+        } catch (Exception e) {
+            log.error("[saveRefreshToken] Exception occurred", e);
+            throw new BaseException(ErrorResponseStatus.SAVE_REFRESH_TOKEN_FAILED);
         }
     }
 

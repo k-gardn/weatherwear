@@ -1,4 +1,4 @@
-package com.weather.wear.common;
+package com.weather.wear.common.authentication;
 
 import com.weather.wear.common.exception.BaseException;
 import com.weather.wear.common.response.ErrorResponseStatus;
@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -102,9 +103,10 @@ public class JwtTokenProvider {
                     .getBody();
 
             return claims.getSubject(); // 토큰의 subject가 사용자 이메일임
-        } catch (SignatureException e) {
+        }
+        catch (SignatureException e) {
             System.out.println("Invalid JWT signature for token: " + token);
-            throw new RuntimeException("Invalid JWT signature");
+            throw new BaseException(ErrorResponseStatus.FORBIDDEN);
         } catch (Exception e) {
             // 다른 예외 처리
             System.out.println("JWT parsing error: " + e.getMessage());
@@ -117,5 +119,15 @@ public class JwtTokenProvider {
         String userEmail = getUserEmail(accessToken, true);
         // 이 부분에서 사용자의 역할이나 권한을 추가할 수 있음
         return new UsernamePasswordAuthenticationToken(userEmail, null, new ArrayList<>());
+    }
+
+    // 리프레시 토큰 만료시간 계산
+    public Timestamp getExpiry(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(refreshTokenSecretKey)
+                .build()// JWT 서명 키
+                .parseClaimsJws(token)
+                .getBody();
+        return new Timestamp(claims.getExpiration().getTime());
     }
 }

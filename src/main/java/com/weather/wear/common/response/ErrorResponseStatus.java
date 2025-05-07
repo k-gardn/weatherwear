@@ -10,13 +10,13 @@ public enum ErrorResponseStatus {
     // JWT 관련 에러
     INVALID_JWT(HttpStatus.UNAUTHORIZED, "유효하지 않은 JWT 토큰입니다."),
     EXPIRED_JWT(HttpStatus.UNAUTHORIZED, "만료된 JWT 토큰입니다."),
+    SAVE_REFRESH_TOKEN_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "리프레시 토큰 저장에 실패했습니다."),
 
+    // 회원가입 관련 에러
     INVALID_PASSWORD(HttpStatus.BAD_REQUEST, "비밀번호 형식이 유효하지 않습니다."),
     INCORRECT_PASSWORD(HttpStatus.UNAUTHORIZED, "비밀번호가 틀렸습니다."),
     ALREADY_REGISTERED_EMAIL(HttpStatus.CONFLICT, "이미 가입된 이메일입니다."),
     NOT_FOUND_USER(HttpStatus.NOT_FOUND, "존재하지 않는 사용자입니다."),
-
-    // 회원가입 관련 에러
     PASSWORD_TOO_SIMPLE(HttpStatus.BAD_REQUEST, "비밀번호는 특수문자, 숫자 포함 8자 이상이어야 합니다."),
 
     // 401

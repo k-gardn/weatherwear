@@ -1,6 +1,9 @@
 package com.weather.wear.member.web;
 
-import com.weather.wear.common.JwtTokenProvider;
+import com.weather.wear.common.authentication.JwtTokenProvider;
+import com.weather.wear.common.authentication.TokenService;
+import com.weather.wear.common.authentication.dto.TokenRefreshRequest;
+import com.weather.wear.common.authentication.dto.TokenRefreshResponse;
 import com.weather.wear.common.exception.BaseException;
 import com.weather.wear.common.response.ErrorResponseStatus;
 import com.weather.wear.common.response.SuccessResponse;
@@ -8,7 +11,6 @@ import com.weather.wear.common.response.SuccessStatus;
 import com.weather.wear.member.domain.Member;
 import com.weather.wear.member.dto.MemberRegister;
 import com.weather.wear.member.service.MemberService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -17,12 +19,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +42,12 @@ public class MainController {
 
     @Autowired
     JwtTokenProvider jwtTokenProvider;
+
+    @Autowired
+    TokenService tokenService;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public String main() {
@@ -58,26 +69,34 @@ public class MainController {
         String email = login.getEmail();
         String password = login.getPassword();
 
-        log.debug("email : {}", email);
-        log.debug("password : {}", password);
-
+        // 사용자 조회
         Member user = memberService.findByEmail(email);
         if (user == null) {
             throw new BaseException(ErrorResponseStatus.NOT_FOUND_USER);
         }
 
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        // 비밀번호 확인
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new BaseException(ErrorResponseStatus.INCORRECT_PASSWORD);
         }
 
+        // accessToken 발급
         String accessToken = jwtTokenProvider.generateAccessToken(user.getEmail());
-        String refreshToken = jwtTokenProvider.generateRefreshToken(user.getEmail());
 
-        if (refreshToken != null) {
-            user.setRefreshToken(refreshToken);
+        // refreshToken → 기존 유효한 것 사용 or 새 발급
+        String refreshToken;
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        if (user.getRefreshToken() != null && user.getRefreshTokenExpiry() != null &&
+                user.getRefreshTokenExpiry().after(now)) {
+            // 기존 refreshToken 유효 → 재사용
+            log.debug("refreshToken 유효 → 재사용 : {}", user.getRefreshTokenExpiry());
+            refreshToken = user.getRefreshToken();
+        } else {
+            // 없거나 만료 → 새로 발급
+            refreshToken = jwtTokenProvider.generateRefreshToken(user.getEmail());
+            tokenService.saveRefreshToken(email, refreshToken, jwtTokenProvider.getExpiry(refreshToken));
         }
-
+        // 응답
         Map<String, String> tokenMap = new HashMap<>();
         tokenMap.put("accessToken", accessToken);
         tokenMap.put("refreshToken", refreshToken);
@@ -91,7 +110,6 @@ public class MainController {
         String email = MRDto.getEmail();
         Member existingMember = memberService.findByEmail(email);
 
-        // 기존 회원 -> 400에러 리턴
         if (existingMember != null) {
             // 이미 가입된 경우 -> 400 에러 리턴
             throw new BaseException(ErrorResponseStatus.ALREADY_REGISTERED_EMAIL);
@@ -101,7 +119,6 @@ public class MainController {
             // 비밀번호 암호화
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String encodedPassword = passwordEncoder.encode(MRDto.getPassword());
-//            MRDto.setPassword(encodedPassword);
 
             //회원정보저장
             Member user = Member.builder()
@@ -113,17 +130,35 @@ public class MainController {
         }
 
     }
-    @PostMapping("/user/myPage")
-    public Map<String, Object> getMyPage(HttpServletRequest request) {
-        Map<String, Object> rstMap = new HashMap<>();
-        // Interceptor에서 설정한 사용자 이메일 가져오기
-        String userEmail = (String) request.getAttribute("userEmail");
-        Member userInfo = memberService.findByEmail(userEmail);
-        rstMap.put("data", userInfo);
-        rstMap.put("success", true);
 
+    @PostMapping("/user/me")
+        public ResponseEntity<?> getMyInfo(@AuthenticationPrincipal String userEmail) {
+        Member userInfo = memberService.findByEmail(userEmail);
+        if (userInfo == null) {
+            throw new BaseException(ErrorResponseStatus.FORBIDDEN);
+        }
         // 사용자 정보를 반환
-        return rstMap;
+        return ResponseEntity.ok(SuccessResponse.of(userInfo));
+    }
+
+    // 엑세스 토큰이 만료되었을 경우, 리프레시 토큰을 보내서 엑세스 토큰을 발급해주는 api
+    @PostMapping("/user/refresh")
+    public ResponseEntity<?> refreshAccessToken(@RequestBody TokenRefreshRequest request) {
+        String refreshToken = request.getRefreshToken();
+
+        // 리프레시 토큰이 기한 만료된 경우.
+        if (!jwtTokenProvider.validateToken(refreshToken, false)) {
+            throw new BaseException(ErrorResponseStatus.UNAUTHORIZED); // 유효하지 않음
+        }
+
+        String email = jwtTokenProvider.getUserEmail(refreshToken, false);
+        // DB에 있는 refreshToken과 비교.
+        if (!tokenService.validateRefreshToken(email, refreshToken)) {
+            throw new BaseException(ErrorResponseStatus.UNAUTHORIZED); // DB와 다름
+        }
+        // DB와 같은 경우 새로운 accessToken 발급.
+        String newAccessToken = jwtTokenProvider.generateAccessToken(email);
+        return ResponseEntity.ok(new TokenRefreshResponse(newAccessToken));
     }
 
 
